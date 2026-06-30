@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const lowStock = misProductos.filter(p => p.stock <= 8);
 
   const stats = [
-    { icon:'🎮', num: misProductos.length, label:'Productos publicados' },
-    { icon:'💰', num: egCurrency(totalVentas), label:'Ventas generadas' },
-    { icon:'📦', num: misPedidos.length, label:'Pedidos con tus juegos' },
-    { icon:'⚠️', num: lowStock.length, label:'Productos con stock bajo' },
+    { icon:'', num: misProductos.length, label:'Productos publicados' },
+    { icon:'', num: egCurrency(totalVentas), label:'Ventas generadas' },
+    { icon:'', num: misPedidos.length, label:'Pedidos con tus juegos' },
+    { icon:'', num: lowStock.length, label:'Productos con stock bajo' },
   ];
 
   document.getElementById('stat-cards').innerHTML = stats.map(s => `
