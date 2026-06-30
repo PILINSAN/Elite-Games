@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Games — Panel Proveedor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">ELITE<span>GAMES</span></div>
+    <div>
+      <div class="nav-group-label">Proveedor</div>
+      <ul class="nav-list">
+        <li><a href="../dashboard/index.html" class="active"> Dashboard</a></li>
+        <li><a href="../productos/index.html"> Mis productos</a></li>
+        <li><a href="../inventario/index.html"> Inventario</a></li>
+        <li><a href="../pedidos/index.html"> Pedidos recibidos</a></li>
+        <li><a href="../perfil/index.html"> Perfil de empresa</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-foot">
+      <button class="btn-logout" id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Portal de proveedores</div>
+        <h1>Hola, <span id="empresa-name">Proveedor</span></h1>
+        <p>Resumen de tu catálogo y ventas en Elite Games.</p>
+      </div>
+      <div class="rank-badge">
+        <div class="avatar" id="avatar">P</div>
+        <div class="meta">
+          <div class="name" id="name2">Proveedor</div>
+          <div class="lvl">PROVEEDOR · LV.50</div>
+        </div>
+      </div>
+    </div>
+    <div class="xp-bar"><i style="width:70%"></i></div>
+
+    <div class="grid cols-4" id="stat-cards"></div>
+
+    <div class="panel" style="margin-top:20px;">
+      <h2>Pedidos recientes de tus productos</h2>
+      <div id="activity-list"></div>
+    </div>
+  </main>
+</div>
+
+<script src="../../shared/js/data.js"></script>
+<script src="../../shared/js/auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Games — Usuarios (Admin)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">ELITE<span>GAMES</span></div>
+    <div>
+      <div class="nav-group-label">Administrador</div>
+      <ul class="nav-list">
+        <li><a href="../dashboard/index.html">📊 Dashboard</a></li>
+        <li><a href="../productos/index.html">🎮 Productos</a></li>
+        <li><a href="../usuarios/index.html" class="active">👥 Usuarios</a></li>
+        <li><a href="../pedidos/index.html">📦 Pedidos</a></li>
+        <li><a href="../reportes/index.html">📈 Reportes</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-foot">
+      <button class="btn-logout" id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Cuentas</div>
+        <h1>Usuarios de la plataforma</h1>
+        <p>Administra usuarios, administradores y proveedores registrados.</p>
+      </div>
+      <button class="btn btn-primary" id="btn-new">+ Nueva cuenta</button>
+    </div>
+    <div class="xp-bar"><i style="width:100%"></i></div>
+
+    <div class="panel">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Nombre</th><th>Usuario</th><th>Correo</th><th>Rol</th><th>Acciones</th></tr></thead>
+          <tbody id="users-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="modal-overlay" style="position:fixed;inset:0;background:rgba(8,9,16,.65);display:none;align-items:center;justify-content:center;z-index:60;padding:20px;">
+  <div class="panel" style="max-width:420px;width:100%;">
+    <h2 id="modal-title">Nueva cuenta</h2>
+    <form id="user-form">
+      <input type="hidden" id="u-original">
+      <div class="field"><label for="u-nombre">Nombre completo</label><input type="text" id="u-nombre" required></div>
+      <div class="field"><label for="u-username">Usuario</label><input type="text" id="u-username" required></div>
+      <div class="field"><label for="u-email">Correo</label><input type="email" id="u-email" required></div>
+      <div class="field"><label for="u-password">Contraseña</label><input type="text" id="u-password" required></div>
+      <div class="field">
+        <label for="u-role">Rol</label>
+        <select id="u-role">
+          <option value="usuario">Usuario</option>
+          <option value="proveedor">Proveedor</option>
+          <option value="admin">Administrador</option>
+        </select>
+      </div>
+      <div style="display:flex; gap:10px; justify-content:flex-end;">
+        <button type="button" class="btn btn-ghost" id="btn-cancel">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../../shared/js/data.js"></script>
+<script src="../../shared/js/auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Games — Catálogo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">ELITE<span>GAMES</span></div>
+    <div>
+      <div class="nav-group-label">Mi cuenta</div>
+      <ul class="nav-list">
+        <li><a href="../catalogo/index.html" class="active"> Catálogo</a></li>
+        <li><a href="../carrito/index.html"> Carrito</a></li>
+        <li><a href="../pedidos/index.html"> Mis pedidos</a></li>
+        <li><a href="../favoritos/index.html"> Favoritos</a></li>
+        <li><a href="../perfil/index.html"> Perfil</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-foot">
+      <button class="btn-logout" id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Tienda</div>
+        <h1>Catálogo de juegos</h1>
+        <p>Explora y agrega tus juegos favoritos al carrito.</p>
+      </div>
+      <div class="rank-badge">
+        <div class="avatar" id="avatar">U</div>
+        <div class="meta">
+          <div class="name" id="name">Usuario</div>
+          <div class="lvl">USUARIO · LV.1</div>
+        </div>
+      </div>
+    </div>
+    <div class="xp-bar"><i style="width:35%"></i></div>
+
+    <div class="toolbar">
+      <input type="text" id="search" class="search-input" placeholder="Buscar juegos..." style="background:var(--panel-2); border:1px solid var(--line); border-radius:8px; padding:10px 12px; color:var(--text); min-width:240px;">
+      <select id="filter-cat" style="background:var(--panel-2); color:var(--text); border:1px solid var(--line); border-radius:8px; padding:9px 12px;"></select>
+    </div>
+
+    <div class="grid cols-3" id="catalogo-grid"></div>
+  </main>
+</div>
+
+<script src="../../shared/js/data.js"></script>
+<script src="../../shared/js/auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

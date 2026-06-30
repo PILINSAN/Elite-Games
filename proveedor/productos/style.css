@@ -1,0 +1,20 @@
+@import url('../../shared/css/base.css');
+:root{ --accent: var(--amber); }
+
+.toolbar{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+.search-input{ min-width:240px; }
+
+.product-emoji{ font-size:20px; margin-right:8px; }
+
+.modal-overlay{
+  position:fixed; inset:0; background:rgba(8,9,16,.65);
+  display:none; align-items:center; justify-content:center; z-index:60; padding:20px;
+}
+.modal-overlay.show{ display:flex; }
+.modal{
+  background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+  width:100%; max-width:440px; padding:24px; box-shadow:var(--shadow);
+}
+.modal h3{ margin:0 0 16px; }
+.modal-actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:6px; }
+.row-2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }

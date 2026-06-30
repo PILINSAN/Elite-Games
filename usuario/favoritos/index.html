@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Games — Favoritos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">ELITE<span>GAMES</span></div>
+    <div>
+      <div class="nav-group-label">Mi cuenta</div>
+      <ul class="nav-list">
+        <li><a href="../catalogo/index.html"> Catálogo</a></li>
+        <li><a href="../carrito/index.html"> Carrito</a></li>
+        <li><a href="../pedidos/index.html"> Mis pedidos</a></li>
+        <li><a href="../favoritos/index.html" class="active"> Favoritos</a></li>
+        <li><a href="../perfil/index.html">s Perfil</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-foot">
+      <button class="btn-logout" id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Lista</div>
+        <h1>Mis favoritos</h1>
+        <p>Tus juegos guardados para no perderlos de vista.</p>
+      </div>
+    </div>
+    <div class="xp-bar"><i style="width:35%"></i></div>
+
+    <div class="grid cols-3" id="fav-grid"></div>
+  </main>
+</div>
+
+<script src="../../shared/js/data.js"></script>
+<script src="../../shared/js/auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

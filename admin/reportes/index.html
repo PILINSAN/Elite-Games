@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Games — Reportes (Admin)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">ELITE<span>GAMES</span></div>
+    <div>
+      <div class="nav-group-label">Administrador</div>
+      <ul class="nav-list">
+        <li><a href="../dashboard/index.html">📊 Dashboard</a></li>
+        <li><a href="../productos/index.html">🎮 Productos</a></li>
+        <li><a href="../usuarios/index.html">👥 Usuarios</a></li>
+        <li><a href="../pedidos/index.html">📦 Pedidos</a></li>
+        <li><a href="../reportes/index.html" class="active">📈 Reportes</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-foot">
+      <button class="btn-logout" id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Inteligencia de negocio</div>
+        <h1>Reportes de la tienda</h1>
+        <p>Visualiza ventas por categoría y el ranking de productos más vendidos.</p>
+      </div>
+    </div>
+    <div class="xp-bar"><i style="width:100%"></i></div>
+
+    <div class="grid cols-2">
+      <div class="panel">
+        <h2>Ingresos por categoría</h2>
+        <div class="bars" id="bars"></div>
+      </div>
+      <div class="panel">
+        <h2>Top productos por stock vendido</h2>
+        <div class="rank-list" id="rank-list"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../../shared/js/data.js"></script>
+<script src="../../shared/js/auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

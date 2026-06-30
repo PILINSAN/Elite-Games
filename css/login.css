@@ -1,0 +1,96 @@
+@import url('../shared/css/base.css');
+
+body.login-body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  padding:20px;
+}
+
+.login-wrap{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  max-width:920px;
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  background:var(--panel);
+}
+
+.login-art{
+  background:
+    repeating-linear-gradient(135deg, rgba(139,92,246,.10) 0 2px, transparent 2px 26px),
+    linear-gradient(160deg, #15172A, #0E0F1A 70%);
+  padding:42px 36px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  border-right:1px solid var(--line);
+}
+
+.login-art .logo{
+  font-family:var(--font-display);
+  font-size:18px;
+  line-height:1.7;
+}
+.login-art .logo span{ color:var(--violet); }
+
+.login-art .tagline{
+  font-size:14px;
+  color:var(--muted);
+  max-width:280px;
+  margin-top:14px;
+}
+
+.role-chips{ display:flex; flex-direction:column; gap:10px; margin-top:30px; }
+.role-chip{
+  display:flex; align-items:center; gap:10px;
+  font-size:12px; color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:8px 14px;
+  width:fit-content;
+}
+.role-chip i{ width:8px; height:8px; border-radius:50%; }
+.role-chip.r-admin i{ background:var(--violet); box-shadow:0 0 8px var(--violet); }
+.role-chip.r-usuario i{ background:var(--cyan); box-shadow:0 0 8px var(--cyan); }
+.role-chip.r-proveedor i{ background:var(--amber); box-shadow:0 0 8px var(--amber); }
+
+.login-form{
+  padding:42px 36px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.login-form h1{ margin:0 0 6px; font-size:22px; }
+.login-form .sub{ color:var(--muted); font-size:14px; margin-bottom:24px; }
+
+.login-error{
+  display:none;
+  background:rgba(255,84,112,.12);
+  border:1px solid var(--danger);
+  color:var(--danger);
+  padding:10px 12px;
+  border-radius:var(--radius-sm);
+  font-size:13px;
+  margin-bottom:16px;
+}
+.login-error.show{ display:block; }
+
+.demo-creds{
+  margin-top:18px;
+  font-size:12px;
+  color:var(--muted);
+  border-top:1px dashed var(--line);
+  padding-top:14px;
+  line-height:1.8;
+}
+.demo-creds b{ color:var(--text); }
+
+@media (max-width:720px){
+  .login-wrap{ grid-template-columns:1fr; }
+  .login-art{ border-right:none; border-bottom:1px solid var(--line); }
+}

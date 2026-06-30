@@ -1,0 +1,13 @@
+@import url('../../shared/css/base.css');
+:root{ --accent: var(--violet); }
+
+select.estado-select{
+  background:var(--panel-2); color:var(--text); border:1px solid var(--line);
+  border-radius:8px; padding:6px 8px; font-size:12px; font-weight:700;
+}
+.filters{ display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+.filters button{
+  background:var(--panel-2); border:1px solid var(--line); color:var(--muted);
+  padding:8px 14px; border-radius:999px; font-size:13px; font-weight:600; cursor:pointer;
+}
+.filters button.active{ color:#0E0F1A; background:var(--accent); border-color:var(--accent); }

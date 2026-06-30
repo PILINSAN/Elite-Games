@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Games — Iniciar sesión</title>
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body class="login-body">
+
+  <div class="login-wrap">
+
+    <div class="login-art">
+      <div>
+        <div class="logo">ELITE<span>GAMES</span></div>
+        <p class="tagline">Tu tienda de videojuegos. Inicia sesión para acceder a tu panel según tu rol.</p>
+      </div>
+
+      <div class="role-chips">
+        <div class="role-chip r-admin"><i></i> Administrador — control total de la tienda</div>
+        <div class="role-chip r-usuario"><i></i> Usuario — compra y sigue tus pedidos</div>
+        <div class="role-chip r-proveedor"><i></i> Proveedor — gestiona tu catálogo e inventario</div>
+      </div>
+    </div>
+
+    <div class="login-form">
+      <h1>Bienvenido de nuevo</h1>
+      <p class="sub">Ingresa tus credenciales para continuar</p>
+
+      <div class="login-error" id="login-error"></div>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="username">Usuario</label>
+          <input type="text" id="username" name="username" placeholder="admin / usuario / proveedor" required autocomplete="username">
+        </div>
+        <div class="field">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Iniciar sesión</button>
+      </form>
+
+      <div class="demo-creds">
+        Cuentas de prueba (clic para autocompletar):<br>
+        <button type="button" class="btn btn-ghost btn-sm" data-fill="admin:admin123" style="margin:6px 6px 0 0;">Admin</button>
+        <button type="button" class="btn btn-ghost btn-sm" data-fill="usuario:user123" style="margin:6px 6px 0 0;">Usuario</button>
+        <button type="button" class="btn btn-ghost btn-sm" data-fill="proveedor:prov123" style="margin:6px 0 0 0;">Proveedor</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="shared/js/data.js"></script>
+  <script src="shared/js/auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

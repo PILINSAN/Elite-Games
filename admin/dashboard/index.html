@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Games — Panel Admin</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">ELITE<span>GAMES</span></div>
+
+    <div>
+      <div class="nav-group-label">Administrador</div>
+      <ul class="nav-list">
+        <li><a href="../dashboard/index.html" class="active">📊 Dashboard</a></li>
+        <li><a href="../productos/index.html">🎮 Productos</a></li>
+        <li><a href="../usuarios/index.html">👥 Usuarios</a></li>
+        <li><a href="../pedidos/index.html">📦 Pedidos</a></li>
+        <li><a href="../reportes/index.html">📈 Reportes</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-foot">
+      <button class="btn-logout" id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Panel de control</div>
+        <h1>Hola, <span id="admin-name">Administrador</span></h1>
+        <p>Resumen general de Elite Games hoy, 29 de junio.</p>
+      </div>
+      <div class="rank-badge">
+        <div class="avatar" id="admin-avatar">A</div>
+        <div class="meta">
+          <div class="name" id="admin-name-2">Administrador</div>
+          <div class="lvl">ADMIN · LV.99</div>
+        </div>
+      </div>
+    </div>
+    <div class="xp-bar"><i style="width:100%"></i></div>
+
+    <div class="grid cols-4" id="stat-cards">
+      <!-- tarjetas generadas por script.js -->
+    </div>
+
+    <div class="grid cols-2" style="margin-top:20px;">
+      <div class="panel">
+        <h2>Actividad reciente</h2>
+        <div id="activity-list"></div>
+      </div>
+      <div class="panel">
+        <h2>Stock bajo / agotado</h2>
+        <div id="low-stock-list"></div>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script src="../../shared/js/data.js"></script>
+<script src="../../shared/js/auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

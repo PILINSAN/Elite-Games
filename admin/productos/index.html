@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Games — Productos (Admin)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="brand">ELITE<span>GAMES</span></div>
+    <div>
+      <div class="nav-group-label">Administrador</div>
+      <ul class="nav-list">
+        <li><a href="../dashboard/index.html">📊 Dashboard</a></li>
+        <li><a href="../productos/index.html" class="active">🎮 Productos</a></li>
+        <li><a href="../usuarios/index.html">👥 Usuarios</a></li>
+        <li><a href="../pedidos/index.html">📦 Pedidos</a></li>
+        <li><a href="../reportes/index.html">📈 Reportes</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-foot">
+      <button class="btn-logout" id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Catálogo</div>
+        <h1>Gestión de productos</h1>
+        <p>Crea, edita y controla el catálogo completo de la tienda.</p>
+      </div>
+      <button class="btn btn-primary" id="btn-new">+ Nuevo producto</button>
+    </div>
+    <div class="xp-bar"><i style="width:100%"></i></div>
+
+    <div class="panel">
+      <div class="toolbar">
+        <input type="text" class="search-input" id="search" placeholder="Buscar por nombre o categoría...">
+        <select id="filter-estado" style="background:var(--panel-2); color:var(--text); border:1px solid var(--line); border-radius:8px; padding:9px 12px;">
+          <option value="">Todos los estados</option>
+          <option value="activo">Activo</option>
+          <option value="agotado">Agotado</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Producto</th><th>Categoría</th><th>Proveedor</th><th>Precio</th><th>Stock</th><th>Estado</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="products-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Modal crear/editar -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <h3 id="modal-title">Nuevo producto</h3>
+    <form id="product-form">
+      <input type="hidden" id="p-id">
+      <div class="field">
+        <label for="p-nombre">Nombre</label>
+        <input type="text" id="p-nombre" required>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="p-categoria">Categoría</label>
+          <input type="text" id="p-categoria" required>
+        </div>
+        <div class="field">
+          <label for="p-precio">Precio (COP)</label>
+          <input type="number" id="p-precio" min="0" required>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="p-stock">Stock</label>
+          <input type="number" id="p-stock" min="0" required>
+        </div>
+        <div class="field">
+          <label for="p-proveedor">Proveedor</label>
+          <input type="text" id="p-proveedor" required>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="btn-cancel">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../../shared/js/data.js"></script>
+<script src="../../shared/js/auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

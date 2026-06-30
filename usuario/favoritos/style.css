@@ -1,0 +1,16 @@
+@import url('../../shared/css/base.css');
+:root{ --accent: var(--cyan); }
+
+.game-card{ display:flex; flex-direction:column; gap:10px; }
+.game-card .thumb{
+  font-size:38px; height:90px; display:flex; align-items:center; justify-content:center;
+  background:var(--panel-2); border-radius:10px;
+}
+.game-card .cat{ font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+.game-card .name{ font-weight:700; font-size:15px; }
+.game-card .price{ font-size:16px; font-weight:800; color:var(--cyan); }
+.game-card .row{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:auto; }
+.fav-btn{ background:none; border:none; font-size:18px; cursor:pointer; color:var(--muted); }
+.fav-btn.active{ color:#FF5470; }
+
+.toolbar{ display:flex; gap:12px; margin-bottom:18px; flex-wrap:wrap; }

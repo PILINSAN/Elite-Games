@@ -1,0 +1,7 @@
+@import url('../../shared/css/base.css');
+:root{ --accent: var(--amber); }
+
+.stock-meter{ width:120px; height:8px; background:var(--line); border-radius:4px; overflow:hidden; }
+.stock-meter i{ display:block; height:100%; }
+.stock-control{ display:flex; align-items:center; gap:8px; }
+.stock-control button{ width:28px; height:28px; border-radius:6px; border:1px solid var(--line); background:var(--panel-2); color:var(--text); cursor:pointer; font-weight:700; }

@@ -1,0 +1,8 @@
+@import url('../../shared/css/base.css');
+:root{ --accent: var(--violet); }
+
+.role-pill{ display:flex; align-items:center; gap:6px; }
+.role-pill i{ width:7px; height:7px; border-radius:50%; }
+.role-pill.admin i{ background:var(--violet); }
+.role-pill.usuario i{ background:var(--cyan); }
+.role-pill.proveedor i{ background:var(--amber); }

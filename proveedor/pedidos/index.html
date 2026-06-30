@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Games — Pedidos recibidos (Proveedor)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">ELITE<span>GAMES</span></div>
+    <div>
+      <div class="nav-group-label">Proveedor</div>
+      <ul class="nav-list">
+        <li><a href="../dashboard/index.html"> Dashboard</a></li>
+        <li><a href="../productos/index.html"> Mis productos</a></li>
+        <li><a href="../inventario/index.html"> Inventario</a></li>
+        <li><a href="../pedidos/index.html" class="active"> Pedidos recibidos</a></li>
+        <li><a href="../perfil/index.html"> Perfil de empresa</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-foot">
+      <button class="btn-logout" id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Logística</div>
+        <h1>Pedidos recibidos</h1>
+        <p>Pedidos de clientes que incluyen tus productos.</p>
+      </div>
+    </div>
+    <div class="xp-bar"><i style="width:70%"></i></div>
+
+    <div class="filters" id="filters">
+      <button data-f="" class="active">Todos</button>
+      <button data-f="preparando">Preparando</button>
+      <button data-f="enviado">Enviado</button>
+      <button data-f="entregado">Entregado</button>
+    </div>
+
+    <div class="panel">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Pedido</th><th>Cliente</th><th>Tus productos</th><th>Fecha</th><th>Estado</th></tr></thead>
+          <tbody id="orders-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../../shared/js/data.js"></script>
+<script src="../../shared/js/auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+@import url('../../shared/css/base.css');
+:root{ --accent: var(--cyan); }
+
+.order-card{ margin-bottom:16px; }
+.order-card .head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+.order-card .head .id{ font-weight:800; }
+.order-card .items{ font-size:13px; color:var(--muted); }
+.order-card .items span{ display:block; padding:3px 0; }
+
+.tracker{ display:flex; align-items:center; gap:6px; margin-top:12px; }
+.tracker .step{ flex:1; height:4px; border-radius:2px; background:var(--line); }
+.tracker .step.done{ background:var(--cyan); }
+.tracker-labels{ display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin-top:6px; }

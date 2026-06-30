@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Games — Perfil de empresa (Proveedor)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">ELITE<span>GAMES</span></div>
+    <div>
+      <div class="nav-group-label">Proveedor</div>
+      <ul class="nav-list">
+        <li><a href="../dashboard/index.html"> Dashboard</a></li>
+        <li><a href="../productos/index.html"> Mis productos</a></li>
+        <li><a href="../inventario/index.html"> Inventario</a></li>
+        <li><a href="../pedidos/index.html"> Pedidos recibidos</a></li>
+        <li><a href="../perfil/index.html" class="active"> Perfil de empresa</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-foot">
+      <button class="btn-logout" id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Cuenta</div>
+        <h1>Perfil de empresa</h1>
+        <p>Actualiza los datos de tu empresa proveedora.</p>
+      </div>
+    </div>
+    <div class="xp-bar"><i style="width:70%"></i></div>
+
+    <div class="panel" style="max-width:480px;">
+      <div class="profile-head">
+        <div class="avatar-lg" id="avatar-lg">P</div>
+        <div>
+          <div style="font-weight:700; font-size:16px;" id="display-name">Proveedor</div>
+          <div style="color:var(--muted); font-size:13px;">Rango: PROVEEDOR · LV.50</div>
+        </div>
+      </div>
+
+      <form id="profile-form">
+        <div class="field"><label for="empresa">Nombre de la empresa</label><input type="text" id="empresa" required></div>
+        <div class="field"><label for="nombre">Contacto encargado</label><input type="text" id="nombre" required></div>
+        <div class="field"><label for="email">Correo electrónico</label><input type="email" id="email" required></div>
+        <div class="field"><label for="password">Contraseña</label><input type="text" id="password" required></div>
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <div class="save-note" id="save-note">✓ Cambios guardados correctamente</div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script src="../../shared/js/data.js"></script>
+<script src="../../shared/js/auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
