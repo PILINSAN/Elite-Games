@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     tbody.innerHTML = mine.map(p => `
       <tr>
-        <td>${p.img} ${p.nombre}</td>
+        <td>${p.nombre}</td>
         <td><div class="stock-meter"><i style="width:${Math.min(100,(p.stock/MAX)*100)}%; background:${colorFor(p.stock)}"></i></div></td>
         <td>${p.stock} und.</td>
         <td>
