@@ -1,13 +1,7 @@
 @import url('../../shared/css/base.css');
 :root{ --accent: var(--violet); }
 
-.icon-box{
-  width:40px; height:40px; border-radius:10px;
-  display:flex; align-items:center; justify-content:center;
-  background:rgba(139,92,246,.15);
-  font-size:18px;
-  margin-bottom:10px;
-}
+
 
 .activity-row{
   display:flex; align-items:center; gap:12px;
