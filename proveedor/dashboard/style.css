@@ -1,13 +1,7 @@
 @import url('../../shared/css/base.css');
 :root{ --accent: var(--amber); }
 
-.icon-box{
-  width:40px; height:40px; border-radius:10px;
-  display:flex; align-items:center; justify-content:center;
-  background:rgba(255,176,32,.15);
-  font-size:18px;
-  margin-bottom:10px;
-}
+
 .activity-row{ display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--line); }
 .activity-row:last-child{ border-bottom:none; }
 .activity-row .dot{ width:8px; height:8px; border-radius:50%; background:var(--amber); flex-shrink:0; }
