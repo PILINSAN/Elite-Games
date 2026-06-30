@@ -26,12 +26,7 @@ function egLogout(){
 
 function egRequireRole(role){
   const s = egSession();
-
-  if(!s || s.role !== role){
-    window.location.href = "/Elite-Games/index.html";
-    return null;
-  }
-
+  if(!s || s.role !== role) return null;
   return s;
 }
 
