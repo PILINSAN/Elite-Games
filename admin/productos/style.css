@@ -4,7 +4,6 @@
 .toolbar{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
 .search-input{ min-width:240px; }
 
-.product-emoji{ font-size:20px; margin-right:8px; }
 
 .modal-overlay{
   position:fixed; inset:0; background:rgba(8,9,16,.65);
