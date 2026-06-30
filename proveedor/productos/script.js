@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     tbody.innerHTML = mine.map(p => `
       <tr>
-        <td><span class="product-emoji">${p.img||''}</span>${p.nombre}</td>
+        <td><span class="product-emoji">${p.img||'🎮'}</span>${p.nombre}</td>
         <td>${p.categoria}</td>
         <td>${egCurrency(p.precio)}</td>
         <td>${p.stock}</td>
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
       stock,
       proveedor: empresa,
       estado: stock > 0 ? 'activo' : 'agotado',
-      img: ''
+      img: '🎮'
     };
     if(id){
       const idx = products.findIndex(p => p.id == id && p.proveedor === empresa);

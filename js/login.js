@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // si ya hay sesión activa, redirige directo a su panel
-  const s = egSession();
+   const s = egSession();
   if(s){ goToRole(s.role); return; }
 
   const form = document.getElementById('login-form');

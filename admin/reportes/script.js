@@ -5,14 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const products = egGetProducts();
   const orders = egGetOrders();
 
-  // ingresos por categoria (simulado a partir de pedidos + catalogo)
   const porCategoria = {};
   orders.forEach(o => o.items.forEach(it => {
     const prod = products.find(p => p.id === it.id);
     const cat = prod ? prod.categoria : 'Otros';
     porCategoria[cat] = (porCategoria[cat]||0) + it.precio * it.cantidad;
   }));
-  // si no hay suficientes datos, completar con catálogo para visual
+  
   products.forEach(p => { if(!(p.categoria in porCategoria)) porCategoria[p.categoria] = p.precio * (10 - p.stock > 0 ? 10 - p.stock : 1); });
 
   const max = Math.max(...Object.values(porCategoria));
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   `).join('');
 
-  // ranking simulado: productos con menor stock = mayor venta
   const ranked = products.slice().sort((a,b) => a.stock - b.stock).slice(0,5);
   const maxVendido = 30;
   document.getElementById('rank-list').innerHTML = ranked.map((p,i) => {

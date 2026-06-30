@@ -3,9 +3,10 @@
 
 .game-card{ display:flex; flex-direction:column; gap:10px; }
 .game-card .thumb{
-  font-size:38px; height:90px; display:flex; align-items:center; justify-content:center;
-  background:var(--panel-2); border-radius:10px;
+  font-size:80px; height:500px; display:flex; align-items:center; justify-content:center;
+  background:var(--panel-2); border-radius:10px; overflow:hidden;
 }
+.game-card .thumb img{ width:100%; height:100%; object-fit:cover; border-radius:10px; }
 .game-card .cat{ font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
 .game-card .name{ font-weight:700; font-size:15px; }
 .game-card .price{ font-size:16px; font-weight:800; color:var(--cyan); }

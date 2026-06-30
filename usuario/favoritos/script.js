@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     grid.innerHTML = products.map(p => `
       <div class="card game-card">
-        <div class="thumb">${p.img}</div>
+        <div class="thumb"><img src="${p.img}" alt="${p.nombre}" onerror="this.parentElement.innerHTML='🎮'"></div>
         <div class="cat">${p.categoria} · ${p.proveedor}</div>
         <div class="name">${p.nombre}</div>
         <div class="price">${egCurrency(p.precio)}</div>
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <button class="btn btn-primary btn-sm" data-add="${p.id}" ${p.stock===0?'disabled':''}>
             ${p.stock===0 ? 'Agotado' : '+ Agregar'}
           </button>
-          <button class="fav-btn active" data-remove="${p.id}"></button>
+          <button class="fav-btn active" data-remove="${p.id}">❤</button>
         </div>
       </div>
     `).join('');

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const favList = favs();
     grid.innerHTML = list.map(p => `
       <div class="card game-card">
-        <div class="thumb">${p.img}</div>
+        <div class="thumb"><img src="${p.img}" alt="${p.nombre}" onerror="this.parentElement.innerHTML=''"></div>
         <div class="cat">${p.categoria} · ${p.proveedor}</div>
         <div class="name">${p.nombre}</div>
         <div class="price">${egCurrency(p.precio)}</div>

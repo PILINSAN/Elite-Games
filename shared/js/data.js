@@ -20,21 +20,20 @@ function egSeed(){
 
   if(!localStorage.getItem(DB_KEYS.products)){
     const products = [
-      { id:1, nombre:'Starforge Odyssey',  categoria:'RPG',      precio:259900, stock:18, proveedor:'Nova Studios', estado:'activo', img:'' },
-      { id:2, nombre:'Shadow Circuit',     categoria:'Acción',   precio:189900, stock:7,  proveedor:'Nova Studios', estado:'activo', img:'' },
-      { id:3, nombre:'Pixel Kart League',  categoria:'Carreras', precio:99900,  stock:32, proveedor:'Retro Forge',  estado:'activo', img:'' },
-      { id:4, nombre:'Mind Maze VR',       categoria:'Puzzle',   precio:149900, stock:0,  proveedor:'Nova Studios', estado:'agotado', img:'' },
-      { id:5, nombre:'Kingdom Embers',     categoria:'Estrategia', precio:219900, stock:11, proveedor:'Retro Forge', estado:'activo', img:'' },
-      { id:6, nombre:'Neon Strikers',      categoria:'Deportes', precio:129900, stock:14, proveedor:'Nova Studios', estado:'activo', img:'' }
-    ];
+{ id:1, nombre:'EA Sports FC 26',          categoria:'Deportes',   precio:259900, stock:18, proveedor:'Nova Studios', estado:'activo', img:'../../assets/img/FC26.jpg' },
+{ id:2, nombre:'Grand Theft Auto V',       categoria:'Acción',     precio:189900, stock:7,  proveedor:'Nova Studios', estado:'activo', img:'../../assets/img/GTAV.jpg' },
+{ id:3, nombre:'Red Dead Redemption 2',    categoria:'Acción',     precio:219900, stock:11, proveedor:'Retro Forge',  estado:'activo', img:'../../assets/img/RDR2.jpg' },
+{ id:4, nombre:'Call of Duty: Black Ops 6',categoria:'Disparos',   precio:249900, stock:0,  proveedor:'Nova Studios', estado:'agotado', img:'../../assets/img/COD-BO6.jpg' },
+{ id:5, nombre:'The Legend of Zelda: TOTK',categoria:'Aventura',   precio:229900, stock:14, proveedor:'Retro Forge',  estado:'activo', img:'../../assets/img/ZELDA.jpg' },  
+         ];
     localStorage.setItem(DB_KEYS.products, JSON.stringify(products));
   }
 
   if(!localStorage.getItem(DB_KEYS.orders)){
     const orders = [
-      { id:1001, usuario:'usuario', items:[{id:1,nombre:'Starforge Odyssey',cantidad:1,precio:259900}], total:259900, estado:'enviado',   fecha:'2026-06-20', proveedor:'Nova Studios' },
-      { id:1002, usuario:'usuario', items:[{id:3,nombre:'Pixel Kart League',cantidad:2,precio:99900}],  total:199800, estado:'preparando', fecha:'2026-06-24', proveedor:'Retro Forge' },
-      { id:1003, usuario:'invitado1', items:[{id:5,nombre:'Kingdom Embers',cantidad:1,precio:219900}], total:219900, estado:'entregado', fecha:'2026-06-10', proveedor:'Retro Forge' }
+      { id:1001, usuario:'usuario', items:[{id:1,nombre:'EA Sports FC 26',cantidad:1,precio:259900}], total:259900, estado:'enviado',   fecha:'2026-06-20', proveedor:'Nova Studios' },
+      { id:1002, usuario:'usuario', items:[{id:3,nombre:'Red Dead Redemption 2',cantidad:2,precio:99900}],  total:199800, estado:'preparando', fecha:'2026-06-24', proveedor:'Retro Forge' },
+      { id:1003, usuario:'invitado1', items:[{id:5,nombre:'The Legend of Zelda: TOTK',cantidad:1,precio:219900}], total:219900, estado:'entregado', fecha:'2026-06-10', proveedor:'Retro Forge' }
     ];
     localStorage.setItem(DB_KEYS.orders, JSON.stringify(orders));
   }

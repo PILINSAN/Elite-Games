@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       cartList.innerHTML = cart.map(c => `
         <div class="cart-row">
-          <div class="thumb">${c.img||''}</div>
+          <div class="thumb">${c.img ? `<img src="${c.img}" alt="${c.nombre}" onerror="this.parentElement.innerHTML='🎮'">` : '🎮'}</div>
           <div class="info">
             <div class="n">${c.nombre}</div>
             <div class="p">${egCurrency(c.precio)} c/u</div>
