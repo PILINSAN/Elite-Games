@@ -11,24 +11,47 @@ document.addEventListener('DOMContentLoaded', () => {
   function render(){
     const term = search.value.toLowerCase();
     const estado = filterEstado.value;
+
     const products = egGetProducts().filter(p =>
-      (p.nombre.toLowerCase().includes(term) || p.categoria.toLowerCase().includes(term)) &&
+      (p.nombre.toLowerCase().includes(term) ||
+       p.categoria.toLowerCase().includes(term)) &&
       (!estado || p.estado === estado)
     );
 
     if(!products.length){
-      tbody.innerHTML = `<tr><td colspan="7"><div class="empty"><div class="eyebrow">Sin resultados</div>No encontramos productos con ese filtro.</div></td></tr>`;
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="7">
+            <div class="empty">
+              <div class="eyebrow">Sin resultados</div>
+              No encontramos productos con ese filtro.
+            </div>
+          </td>
+        </tr>`;
       return;
     }
 
     tbody.innerHTML = products.map(p => `
       <tr>
-        <td><span class="product-emoji">${p.img||'🎮'}</span>${p.nombre}</td>
+        <td>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <img
+              src="${p.img}"
+              alt="${p.nombre}"
+              style="width:60px;height:60px;object-fit:cover;border-radius:8px;"
+            >
+            <span>${p.nombre}</span>
+          </div>
+        </td>
         <td>${p.categoria}</td>
         <td>${p.proveedor}</td>
         <td>${egCurrency(p.precio)}</td>
         <td>${p.stock}</td>
-        <td><span class="badge ${p.estado==='activo'?'green':'red'}">${p.estado}</span></td>
+        <td>
+          <span class="badge ${p.estado==='activo' ? 'green' : 'red'}">
+            ${p.estado}
+          </span>
+        </td>
         <td>
           <button class="btn btn-ghost btn-sm" data-edit="${p.id}">Editar</button>
           <button class="btn btn-danger btn-sm" data-del="${p.id}">Eliminar</button>
@@ -47,17 +70,26 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('p-proveedor').value = product ? product.proveedor : '';
     overlay.classList.add('show');
   }
-  function closeModal(){ overlay.classList.remove('show'); form.reset(); }
+
+  function closeModal(){
+    overlay.classList.remove('show');
+    form.reset();
+  }
 
   document.getElementById('btn-new').addEventListener('click', () => openModal(null));
   document.getElementById('btn-cancel').addEventListener('click', closeModal);
-  overlay.addEventListener('click', e => { if(e.target === overlay) closeModal(); });
+
+  overlay.addEventListener('click', e => {
+    if(e.target === overlay) closeModal();
+  });
 
   form.addEventListener('submit', e => {
     e.preventDefault();
+
     const id = document.getElementById('p-id').value;
     const products = egGetProducts();
     const stock = Number(document.getElementById('p-stock').value);
+
     const data = {
       nombre: document.getElementById('p-nombre').value.trim(),
       categoria: document.getElementById('p-categoria').value.trim(),
@@ -65,18 +97,19 @@ document.addEventListener('DOMContentLoaded', () => {
       stock,
       proveedor: document.getElementById('p-proveedor').value.trim(),
       estado: stock > 0 ? 'activo' : 'agotado',
-      img: '🎮'
+      img: ''
     };
 
     if(id){
       const idx = products.findIndex(p => p.id == id);
       products[idx] = { ...products[idx], ...data };
       egToast('Producto actualizado correctamente');
-    } else {
-      const newId = products.length ? Math.max(...products.map(p=>p.id)) + 1 : 1;
+    }else{
+      const newId = products.length ? Math.max(...products.map(p => p.id)) + 1 : 1;
       products.push({ id:newId, ...data });
       egToast('Producto creado correctamente');
     }
+
     egSetProducts(products);
     closeModal();
     render();
@@ -85,10 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
   tbody.addEventListener('click', e => {
     const editId = e.target.dataset.edit;
     const delId = e.target.dataset.del;
+
     if(editId){
       const p = egGetProducts().find(p => p.id == editId);
       openModal(p);
     }
+
     if(delId){
       if(confirm('¿Eliminar este producto del catálogo?')){
         egSetProducts(egGetProducts().filter(p => p.id != delId));
@@ -100,5 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   search.addEventListener('input', render);
   filterEstado.addEventListener('change', render);
+
   render();
 });
