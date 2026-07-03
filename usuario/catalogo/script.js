@@ -93,21 +93,21 @@ document.addEventListener('DOMContentLoaded', () => {
               ${egCurrency(p.precio)}
           </div>
 
-          <div class="row">
+<div class="row">
 
-              <button class="btn btn-primary btn-sm"
-                  data-add="${p.id}"
-                  ${p.stock==0?"disabled":""}>
+  <button class="btn btn-primary btn-sm"
+    data-add="${p.id}"
+    ${p.stock==0 ? "disabled" : ""}>
 
-                  ${p.stock==0?"Agotado":"+ Agregar"}
+    ${p.stock==0 ? "Agotado" : "+ Agregar"}
+  </button>
 
-              </button>
+  <button class="fav-btn ${favList.includes(p.id) ? "active" : ""}"
+    data-fav="${p.id}">
+    ❤
+  </button>
 
-              <button class="fav-btn ${favList.includes(p.id)?"active":""}"
-                  data-fav="${p.id}">
-              </button>
-
-          </div>
+</div>
 
       </div>
 
