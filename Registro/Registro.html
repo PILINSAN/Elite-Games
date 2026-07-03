@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Games — Registro</title>
+
+<link rel="stylesheet" href="Registro.css">
+</head>
+<body class="login-body">
+
+<div class="login-wrap">
+
+    <div class="login-art">
+
+        <div>
+            <div class="logo">
+                ELITE<span>GAMES</span>
+            </div>
+
+            <p class="tagline">
+                Crea una cuenta y comienza a disfrutar de los mejores videojuegos.
+            </p>
+        </div>
+
+        <div class="role-chips">
+
+            <div class="role-chip">
+                🎮 Compra juegos fácilmente
+            </div>
+
+            <div class="role-chip">
+                ❤️ Guarda tus favoritos
+            </div>
+
+            <div class="role-chip">
+                📦 Consulta tus pedidos
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="login-form">
+
+        <h1>Crear cuenta</h1>
+
+        <p class="sub">
+            Completa tus datos para registrarte.
+        </p>
+
+        <div class="login-error" id="registro-error"></div>
+
+        <form id="registro-form">
+
+            <div class="field">
+                <label>Nombre completo</label>
+                <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Juan Pérez"
+                    required>
+            </div>
+
+            <div class="field">
+                <label>Correo electrónico</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="correo@ejemplo.com"
+                    required>
+            </div>
+
+            <div class="field">
+                <label>Nombre de usuario</label>
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Usuario"
+                    required>
+            </div>
+
+            <div class="field">
+                <label>Contraseña</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="********"
+                    required>
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-primary"
+                style="width:100%;">
+                Registrarme
+            </button>
+
+        </form>
+
+        <p style="margin-top:25px;text-align:center;">
+
+            ¿Ya tienes una cuenta?
+
+            <a href="../login.html">
+                Iniciar sesión
+            </a>
+
+        </p>
+
+    </div>
+
+</div>
+
+<script src="../shared/js/data.js"></script>
+<script src="../shared/js/auth.js"></script>
+<script src="Registro.js"></script>
+
+</body>
+</html>
