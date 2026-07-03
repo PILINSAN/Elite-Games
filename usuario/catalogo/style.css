@@ -1,17 +1,334 @@
 @import url('../../shared/css/base.css');
-:root{ --accent: var(--cyan); }
 
-.game-card{ display:flex; flex-direction:column; gap:10px; }
-.game-card .thumb{
-  font-size:80px; height:500px; display:flex; align-items:center; justify-content:center;
-  background:var(--panel-2); border-radius:10px; overflow:hidden;
+:root{
+  --accent: var(--cyan);
 }
-.game-card .thumb img{ width:100%; height:100%; object-fit:cover; border-radius:10px; }
-.game-card .cat{ font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
-.game-card .name{ font-weight:700; font-size:15px; }
-.game-card .price{ font-size:16px; font-weight:800; color:var(--cyan); }
-.game-card .row{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:auto; }
-.fav-btn{ background:none; border:none; font-size:18px; cursor:pointer; color:var(--muted); }
-.fav-btn.active{ color:#FF5470; }
 
-.toolbar{ display:flex; gap:12px; margin-bottom:18px; flex-wrap:wrap; }
+.shell{
+  display:flex;
+  min-height:100vh;
+}
+
+.sidebar{
+  width:260px;
+  background:var(--panel);
+  border-right:1px solid var(--line);
+  padding:18px;
+}
+
+.brand{
+  font-size:20px;
+  font-weight:800;
+  margin-bottom:20px;
+}
+
+.brand span{
+  color:var(--cyan);
+}
+
+.nav-group-label{
+  font-size:12px;
+  color:var(--muted);
+  margin:18px 0 10px;
+}
+
+.nav-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.nav-list a{
+  color:var(--text);
+  text-decoration:none;
+  padding:8px 10px;
+  border-radius:8px;
+  display:block;
+  background:transparent;
+}
+
+.nav-list a.active,
+.nav-list a:hover{
+  background:var(--panel-2);
+}
+
+.btn-logout{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:var(--danger);
+  color:white;
+  cursor:pointer;
+}
+
+.main{
+  flex:1;
+  padding:20px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.eyebrow{
+  font-size:12px;
+  color:var(--muted);
+}
+
+h1{
+  margin:4px 0;
+}
+
+.rank-badge{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:var(--panel-2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+
+.xp-bar{
+  height:6px;
+  background:var(--panel-2);
+  border-radius:999px;
+  overflow:hidden;
+  margin-bottom:18px;
+}
+
+.xp-bar i{
+  display:block;
+  height:100%;
+  background:var(--cyan);
+}
+
+.toolbar{
+  display:flex;
+  gap:12px;
+  margin-bottom:18px;
+  flex-wrap:wrap;
+}
+
+.search-input{
+  flex:1;
+  min-width:240px;
+}
+
+.grid{
+  display:grid;
+  gap:16px;
+}
+
+.cols-3{
+  grid-template-columns:repeat(3,1fr);
+}
+
+.game-card{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.game-card .thumb{
+  height:500px;
+  background:var(--panel-2);
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.game-card .thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.game-card .cat{
+  font-size:11px;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+.game-card .name{
+  font-weight:700;
+  font-size:15px;
+}
+
+.game-card .price{
+  font-size:16px;
+  font-weight:800;
+  color:var(--cyan);
+}
+
+.game-card .row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.fav-btn{
+  background:none;
+  border:none;
+  font-size:18px;
+  cursor:pointer;
+  color:var(--muted);
+}
+
+.fav-btn.active{
+  color:#4dc7ff;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  backdrop-filter:blur(8px);
+}
+
+.modal.hidden{
+  display:none;
+}
+
+.modal-content{
+  width:520px;
+  max-width:92%;
+  background:var(--panel);
+  border-radius:14px;
+  padding:18px;
+  position:relative;
+}
+
+.modal-img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.modal-content h2{
+  margin:10px 0 4px;
+}
+
+.modal-content p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.4;
+}
+
+.modal-price{
+  margin-top:10px;
+  font-weight:800;
+  color:var(--cyan);
+}
+
+.modal-actions{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+}
+
+.modal-actions button{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.close{
+  position:absolute;
+  top:10px;
+  right:12px;
+  font-size:22px;
+  cursor:pointer;
+}
+
+/* ================= BOTONES ================= */
+
+.btn{
+  padding:10px 12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.2s;
+  font-family:inherit;
+}
+
+.btn-sm{
+  padding:8px 10px;
+  font-size:13px;
+}
+
+.btn-primary{
+  background:var(--cyan);
+  color:#001018;
+}
+
+.btn-primary:hover{
+  filter:brightness(1.15);
+  transform:translateY(-2px);
+}
+
+.btn-primary:active{
+  transform:scale(0.97);
+}
+
+.btn:disabled{
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+/* ================= FAVORITOS ================= */
+
+.fav-btn{
+  background:none;
+  border:none;
+  font-size:18px;
+  cursor:pointer;
+  color:var(--muted);
+  transition:.2s;
+}
+
+.fav-btn:hover{
+  transform:scale(1.2);
+}
+
+.fav-btn.active{
+  color:#4dc7ff;
+}
+
+/* ================= BOTONES MODAL ================= */
+
+.modal-actions button{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.2s;
+}
+
+.modal-actions button:hover{
+  transform:translateY(-2px);
+}
