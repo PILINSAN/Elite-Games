@@ -21,9 +21,10 @@ function egSession(){
 
 function egLogout(){
   localStorage.removeItem(DB_KEYS.session);
-  window.location.href = "/Elite-Games/index.html";
-}
 
+  // Vuelve al catálogo público como invitado
+  window.location.href = "../../index.html";
+}
 function egRequireRole(role){
   const s = egSession();
   if(!s || s.role !== role) return null;
