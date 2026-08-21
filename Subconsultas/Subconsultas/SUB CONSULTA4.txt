@@ -1,0 +1,71 @@
+::Requisito funcional: El sistema debe identificar a los administradores que administran más juegos que el promedio de juegos administrados por administrador.
+::Enunciado: Mostrar el nombre completo del administrador y la cantidad de juegos que administra.
+
+MariaDB [elite_games]> SELECT CONCAT(a.nombre, ' ', a.apellido) AS administrador,
+    ->        COUNT(aj.idJuego) AS cantidad_juegos
+    -> FROM administradores a
+    -> INNER JOIN admin_juego aj ON a.idAdmin = aj.idAdmin
+    -> GROUP BY a.idAdmin, a.nombre, a.apellido
+    -> HAVING COUNT(aj.idJuego) > (
+    ->     SELECT AVG(cnt.total_juegos)
+    ->     FROM (
+    ->         SELECT COUNT(idJuego) AS total_juegos
+    ->         FROM admin_juego
+    ->         GROUP BY idAdmin
+    ->     ) AS cnt
+    -> );
+Empty set (0.001 sec)
+
+MariaDB [elite_games]> SELECT idAdmin, COUNT(idJuego) AS total_juegos
+    -> FROM admin_juego
+    -> GROUP BY idAdmin;
++---------+--------------+
+| idAdmin | total_juegos |
++---------+--------------+
+|       1 |            1 |
+|       2 |            1 |
+|       3 |            1 |
+|       4 |            1 |
+|       5 |            1 |
+|       6 |            1 |
+|       7 |            1 |
+|       8 |            1 |
+|       9 |            1 |
+|      10 |            1 |
+|      11 |            1 |
+|      12 |            1 |
+|      13 |            1 |
+|      14 |            1 |
+|      15 |            1 |
+|      16 |            1 |
+|      17 |            1 |
+|      18 |            1 |
+|      19 |            1 |
+|      20 |            1 |
+|      21 |            1 |
+|      22 |            1 |
+|      23 |            1 |
+|      24 |            1 |
+|      25 |            1 |
+|      26 |            1 |
+|      27 |            1 |
+|      28 |            1 |
+|      29 |            1 |
+|      30 |            1 |
++---------+--------------+
+30 rows in set (0.001 sec)
+
+MariaDB [elite_games]> SELECT AVG(cnt.total_juegos) AS promedio
+    -> FROM (
+    ->     SELECT COUNT(idJuego) AS total_juegos
+    ->     FROM admin_juego
+    ->     GROUP BY idAdmin
+    -> ) AS cnt;
++----------+
+| promedio |
++----------+
+|   1.0000 |
++----------+
+1 row in set (0.001 sec)
+
+MariaDB [elite_games]>

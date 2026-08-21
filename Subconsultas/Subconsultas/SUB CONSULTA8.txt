@@ -1,0 +1,54 @@
+::Requisito funcional: El sistema debe listar a los usuarios que jamás han generado un PQRS, junto con la información de sus pedidos y juegos comprados (si existen).
+::Enunciado: Mostrar el usuario, el correo, el número de pedido y el juego comprado, solo para quienes no aparecen registrados en la tabla pqrs.
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        u.email,
+    ->        j.nombre AS juego,
+    ->        dp.cantidad,
+    ->        (
+    ->            SELECT COUNT(*)
+    ->            FROM pqrs pq
+    ->            WHERE pq.idUsuario = u.idUsuario
+    ->        ) AS cantidad_pqrs
+    -> FROM usuarios u
+    -> LEFT JOIN pedidos p ON u.idUsuario = p.idUsuario
+    -> LEFT JOIN detalle_pedido dp ON p.idPedido = dp.idPedido
+    -> LEFT JOIN juegos j ON dp.idJuego = j.idJuego
+    -> ORDER BY usuario;
++--------------------+--------------------------------+-----------------------+----------+---------------+
+| usuario            | email                          | juego                 | cantidad | cantidad_pqrs |
++--------------------+--------------------------------+-----------------------+----------+---------------+
+| Alejandro Suárez   | alejandro.suarez15@correo.com  | Eco del Silencio      |        1 |             1 |
+| Andrea Pardo       | andrea.pardo29@correo.com      | Marea Oscura          |        3 |             1 |
+| Andrés Pérez       | andres.perez3@correo.com       | Estación Fantasma     |        1 |             1 |
+| Camila Rodríguez   | camila.rodriguez2@correo.com   | Guardianes del Abismo |        3 |             1 |
+| Camilo Cárdenas    | camilo.cardenas28@correo.com   | Cazadores de Sombra   |        2 |             1 |
+| Carolina Jiménez   | carolina.jimenez18@correo.com  | Cazadores de Sombra   |        1 |             1 |
+| Daniela Ortiz      | daniela.ortiz12@correo.com     | Guardianes del Abismo |        1 |             1 |
+| David Ruiz         | david.ruiz19@correo.com        | Marea Oscura          |        2 |             1 |
+| Diego Ramírez      | diego.ramirez9@correo.com      | Marea Oscura          |        1 |             1 |
+| Esteban Aguilar    | esteban.aguilar25@correo.com   | Eco del Silencio      |        2 |             1 |
+| Felipe Hernández   | felipe.hernandez7@correo.com   | Rebelión Estelar      |        2 |             1 |
+| Gabriela Herrera   | gabriela.herrera22@correo.com  | Guardianes del Abismo |        2 |             1 |
+| Isabella Mendoza   | isabella.mendoza20@correo.com  | Laberinto Infinito    |        3 |             1 |
+| Juan Gómez         | juan.gomez1@correo.com         | Sombras del Imperio   |        2 |             1 |
+| Julián Reyes       | julian.reyes17@correo.com      | Rebelión Estelar      |        3 |             1 |
+| Juliana Navarro    | juliana.navarro30@correo.com   | Laberinto Infinito    |        1 |             1 |
+| Laura Torres       | laura.torres8@correo.com       | Cazadores de Sombra   |        3 |             1 |
+| Manuela Salazar    | manuela.salazar26@correo.com   | Fortaleza Eterna      |        3 |             1 |
+| Mariana García     | mariana.garcia6@correo.com     | Fortaleza Eterna      |        1 |             1 |
+| Miguel Cruz        | miguel.cruz21@correo.com       | Sombras del Imperio   |        1 |             1 |
+| Natalia Vargas     | natalia.vargas16@correo.com    | Fortaleza Eterna      |        2 |             1 |
+| Nicolás Castro     | nicolas.castro11@correo.com    | Sombras del Imperio   |        3 |             1 |
+| Paula Morales      | paula.morales14@correo.com     | Imperio de Cenizas    |        3 |             1 |
+| Ricardo Restrepo   | ricardo.restrepo27@correo.com  | Rebelión Estelar      |        1 |             1 |
+| Santiago López     | santiago.lopez5@correo.com     | Eco del Silencio      |        3 |             1 |
+| Sebastián Rojas    | sebastian.rojas13@correo.com   | Estación Fantasma     |        2 |             1 |
+| Sofía Díaz         | sofia.diaz10@correo.com        | Laberinto Infinito    |        2 |             1 |
+| Tomás Guerrero     | tomas.guerrero23@correo.com    | Estación Fantasma     |        3 |             1 |
+| Valentina Martínez | valentina.martinez4@correo.com | Imperio de Cenizas    |        2 |             1 |
+| Valeria Molina     | valeria.molina24@correo.com    | Imperio de Cenizas    |        1 |             1 |
++--------------------+--------------------------------+-----------------------+----------+---------------+
+30 rows in set (0.001 sec)
+
+MariaDB [elite_games]>

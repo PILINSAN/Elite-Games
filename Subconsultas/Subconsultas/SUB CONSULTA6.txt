@@ -1,0 +1,48 @@
+::Requisito funcional: El sistema debe identificar los PQRS relacionados con el juego que tiene más reseñas registradas.
+::Enunciado: Mostrar el usuario, el tipo de PQRS, el juego relacionado, la categoría del juego y el estado del PQRS.
+
+MariaDB [elite_games]>  SELECT j.nombre AS juego,
+    ->        j.idCategoria,
+    ->        (
+    ->            SELECT COUNT(r.idResena)
+    ->            FROM resenas r
+    ->            WHERE r.idJuego = j.idJuego
+    ->        ) AS cantidad_resenas
+    -> FROM juegos j;
++------------------------+-------------+------------------+
+| juego                  | idCategoria | cantidad_resenas |
++------------------------+-------------+------------------+
+| Dragón de Acero        |           1 |                0 |
+| Sombras del Imperio    |           2 |                0 |
+| Velocidad Extrema 2099 |           3 |                5 |
+| Reino Perdido          |           4 |                0 |
+| Guardianes del Abismo  |           5 |                0 |
+| Furia Mecánica         |           6 |                0 |
+| Crónicas de Eldoria    |           7 |                0 |
+| Estación Fantasma      |           8 |                5 |
+| Legado de Hierro       |           9 |                0 |
+| Tormenta Carmesí       |          10 |                0 |
+| Imperio de Cenizas     |          11 |                0 |
+| Rutas del Vacío        |          12 |                0 |
+| Nación Salvaje         |          13 |                5 |
+| Eco del Silencio       |          14 |                0 |
+| Titanes de Neón        |          15 |                0 |
+| Caminos Perdidos       |          16 |                0 |
+| Fortaleza Eterna       |          17 |                0 |
+| Susurros del Bosque    |          18 |                5 |
+| Alba de Sangre         |          19 |                0 |
+| Rebelión Estelar       |          20 |                0 |
+| Colonia Zero           |          21 |                0 |
+| Vestigios del Norte    |          22 |                0 |
+| Cazadores de Sombra    |          23 |                5 |
+| Reino de Cristal       |          24 |                0 |
+| Última Frontera        |          25 |                0 |
+| Marea Oscura           |          26 |                0 |
+| Horizonte Roto         |          27 |                0 |
+| Espíritu de Acero      |          28 |                5 |
+| Laberinto Infinito     |          29 |                0 |
+| Constelación Perdida   |          30 |                0 |
++------------------------+-------------+------------------+
+30 rows in set (0.001 sec)
+
+MariaDB [elite_games]>

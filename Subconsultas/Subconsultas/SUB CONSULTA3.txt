@@ -1,0 +1,37 @@
+::Requisito funcional: El sistema debe listar los juegos que nunca han sido comprados por ningún usuario.
+::Enunciado: Mostrar el nombre del juego y su proveedor, para los juegos que no aparecen en ningún detalle de pedido.
+
+MariaDB [elite_games]> SELECT j.nombre AS juego,
+    ->        pr.razon_social AS proveedor
+    -> FROM juegos j
+    -> INNER JOIN proveedores pr ON j.idProveedor = pr.idProveedor
+    -> WHERE j.idJuego NOT IN (
+    ->     SELECT DISTINCT dp.idJuego FROM detalle_pedido dp
+    -> );
++------------------------+------------------------+
+| juego                  | proveedor              |
++------------------------+------------------------+
+| Dragón de Acero        | Nébula Studios SAS     |
+| Velocidad Extrema 2099 | Estudio Cóndor Digital |
+| Reino Perdido          | RetroWave Interactive  |
+| Furia Mecánica         | Estudio Guacamaya      |
+| Crónicas de Eldoria    | Dragón Rojo Games      |
+| Legado de Hierro       | Nova Sur Entertainment |
+| Tormenta Carmesí       | Estudio Cascabel       |
+| Rutas del Vacío        | Estudio Tucán          |
+| Nación Salvaje         | Silverline Interactive |
+| Titanes de Neón        | Meridian Games Co.     |
+| Caminos Perdidos       | Estudio Colibrí        |
+| Susurros del Bosque    | Estudio Puma Digital   |
+| Alba de Sangre         | Aurora Byte Games      |
+| Colonia Zero           | Estudio Páramo Games   |
+| Vestigios del Norte    | Ironclad Sur Studios   |
+| Reino de Cristal       | Solsticio Interactive  |
+| Última Frontera        | Estudio Orquídea       |
+| Horizonte Roto         | Estudio Anaconda Games |
+| Espíritu de Acero      | Rumbo Norte Studios    |
+| Constelación Perdida   | Fenix Sur Interactive  |
++------------------------+------------------------+
+20 rows in set (0.145 sec)
+
+MariaDB [elite_games]>

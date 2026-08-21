@@ -1,0 +1,38 @@
+::Requisito funcional: El sistema debe identificar los pagos cuyo monto sea mayor al promedio de montos pagados en toda la plataforma, junto con el detalle del juego comprado.
+::Enunciado: Mostrar el usuario, el número de pedido, el juego comprado, el método de pago y el monto pagado, solo para los pagos por encima del promedio general.
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        p.idPedido,
+    ->        j.nombre AS juego,
+    ->        pg.metodo_pago,
+    ->        pg.monto
+    -> FROM pagos pg
+    -> INNER JOIN pedidos p ON pg.idPedido = p.idPedido
+    -> INNER JOIN usuarios u ON p.idUsuario = u.idUsuario
+    -> INNER JOIN detalle_pedido dp ON p.idPedido = dp.idPedido
+    -> INNER JOIN juegos j ON dp.idJuego = j.idJuego
+    -> WHERE pg.monto > (
+    ->     SELECT AVG(monto) FROM pagos
+    -> )
+    -> ORDER BY pg.monto DESC;
++--------------------+----------+-----------------------+-----------------+--------+
+| usuario            | idPedido | juego                 | metodo_pago     | monto  |
++--------------------+----------+-----------------------+-----------------+--------+
+| Paula Morales      |       14 | Imperio de Cenizas    | daviplata       | 174.42 |
+| Isabella Mendoza   |       20 | Laberinto Infinito    | tarjeta_credito | 164.43 |
+| Tomás Guerrero     |       23 | Estación Fantasma     | nequi           | 133.05 |
+| Manuela Salazar    |       26 | Fortaleza Eterna      | tarjeta_debito  | 124.71 |
+| Laura Torres       |        8 | Cazadores de Sombra   | nequi           | 124.41 |
+| Camila Rodríguez   |        2 | Guardianes del Abismo | pse             | 123.45 |
+| Julián Reyes       |       17 | Rebelión Estelar      | pse             | 120.03 |
+| Juan Gómez         |        1 | Sombras del Imperio   | tarjeta_debito  | 119.66 |
+| David Ruiz         |       19 | Marea Oscura          | daviplata       | 113.00 |
+| Valentina Martínez |        4 | Imperio de Cenizas    | daviplata       | 108.84 |
+| Esteban Aguilar    |       25 | Eco del Silencio      | tarjeta_credito | 100.98 |
+| Felipe Hernández   |        7 | Rebelión Estelar      | pse             |  94.52 |
+| Sofía Díaz         |       10 | Laberinto Infinito    | tarjeta_credito |  91.26 |
+| Gabriela Herrera   |       22 | Guardianes del Abismo | pse             |  91.10 |
++--------------------+----------+-----------------------+-----------------+--------+
+14 rows in set (0.001 sec)
+
+MariaDB [elite_games]>

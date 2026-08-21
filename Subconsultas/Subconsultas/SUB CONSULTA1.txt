@@ -1,0 +1,40 @@
+::Requisito funcional: El sistema debe identificar a los usuarios que han gastado más que el promedio general de gasto de todos los usuarios.
+::Enunciado: Mostrar el nombre completo del usuario y su total gastado, solo para quienes superan el promedio general.
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        SUM(dp.cantidad * dp.precio_unitario) AS total_gastado
+    -> FROM usuarios u
+    -> INNER JOIN pedidos p ON u.idUsuario = p.idUsuario
+    -> INNER JOIN detalle_pedido dp ON p.idPedido = dp.idPedido
+    -> GROUP BY u.idUsuario, u.nombre, u.apellido
+    -> HAVING SUM(dp.cantidad * dp.precio_unitario) > (
+    ->     SELECT AVG(sub.total)
+    ->     FROM (
+    ->         SELECT SUM(dp2.cantidad * dp2.precio_unitario) AS total
+    ->         FROM pedidos p2
+    ->         INNER JOIN detalle_pedido dp2 ON p2.idPedido = dp2.idPedido
+    ->         GROUP BY p2.idUsuario
+    ->     ) AS sub
+    -> );
++--------------------+---------------+
+| usuario            | total_gastado |
++--------------------+---------------+
+| Juan Gómez         |        119.66 |
+| Camila Rodríguez   |        123.45 |
+| Valentina Martínez |        108.84 |
+| Felipe Hernández   |         94.52 |
+| Laura Torres       |        124.41 |
+| Sofía Díaz         |         91.26 |
+| Paula Morales      |        174.42 |
+| Julián Reyes       |        120.03 |
+| David Ruiz         |        113.00 |
+| Isabella Mendoza   |        164.43 |
+| Gabriela Herrera   |         91.10 |
+| Tomás Guerrero     |        133.05 |
+| Esteban Aguilar    |        100.98 |
+| Manuela Salazar    |        124.71 |
++--------------------+---------------+
+14 rows in set (0.055 sec)
+
+MariaDB [elite_games]>
+

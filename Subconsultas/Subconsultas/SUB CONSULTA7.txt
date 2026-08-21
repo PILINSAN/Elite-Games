@@ -1,0 +1,37 @@
+::Requisito funcional: El sistema debe mostrar el inventario de los juegos cuyo stock disponible sea menor al promedio general de stock, junto con su proveedor y categoría.
+::Enunciado: Mostrar el juego, la categoría, el proveedor y el stock disponible, solo para los juegos con stock por debajo del promedio.
+
+MariaDB [elite_games]> SELECT j.nombre AS juego,
+    ->        c.nombre AS categoria,
+    ->        pr.razon_social AS proveedor,
+    ->        inv.stock_disponible
+    -> FROM inventario inv
+    -> INNER JOIN juegos j ON inv.idJuego = j.idJuego
+    -> INNER JOIN categorias c ON j.idCategoria = c.idCategoria
+    -> INNER JOIN proveedores pr ON j.idProveedor = pr.idProveedor
+    -> WHERE inv.stock_disponible < (
+    ->     SELECT AVG(stock_disponible) FROM inventario
+    -> )
+    -> ORDER BY inv.stock_disponible ASC;
++------------------------+-----------------+---------------------------+------------------+
+| juego                  | categoria       | proveedor                 | stock_disponible |
++------------------------+-----------------+---------------------------+------------------+
+| Laberinto Infinito     | Ciencia Ficción | Estudio Quetzal Digital   |                8 |
+| Dragón de Acero        | Acción          | Nébula Studios SAS        |               12 |
+| Constelación Perdida   | Fantasía        | Fenix Sur Interactive     |               15 |
+| Sombras del Imperio    | Aventura        | Pixel Forge Games         |               19 |
+| Velocidad Extrema 2099 | RPG             | Estudio Cóndor Digital    |               26 |
+| Reino Perdido          | Estrategia      | RetroWave Interactive     |               33 |
+| Guardianes del Abismo  | Deportes        | Quantum Play Studios      |               40 |
+| Furia Mecánica         | Carreras        | Estudio Guacamaya         |               47 |
+| Crónicas de Eldoria    | Simulación      | Dragón Rojo Games         |               54 |
+| Estación Fantasma      | Puzzle          | Estudio Andes Interactivo |               61 |
+| Legado de Hierro       | Terror          | Nova Sur Entertainment    |               68 |
+| Tormenta Carmesí       | Shooter         | Estudio Cascabel          |               75 |
+| Imperio de Cenizas     | Plataformas     | Horizonte Digital Games   |               82 |
+| Rutas del Vacío        | Lucha           | Estudio Tucán             |               89 |
+| Nación Salvaje         | Sigilo          | Silverline Interactive    |               96 |
++------------------------+-----------------+---------------------------+------------------+
+15 rows in set (0.001 sec)
+
+MariaDB [elite_games]>

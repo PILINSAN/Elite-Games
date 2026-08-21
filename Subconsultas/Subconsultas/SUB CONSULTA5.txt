@@ -1,0 +1,48 @@
+::Requisito funcional: El sistema debe mostrar el detalle completo de los pedidos cuyo total sea mayor al total del pedido más pequeño registrado.
+::Enunciado: Mostrar el usuario, el número de pedido, el juego comprado, la cantidad y el total del pedido, excluyendo el pedido con el valor mínimo.
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        p.idPedido,
+    ->        p.total
+    -> FROM usuarios u
+    -> INNER JOIN pedidos p ON u.idUsuario = p.idUsuario
+    -> WHERE p.total > (
+    ->     SELECT MIN(total) FROM pedidos
+    -> )
+    -> ORDER BY p.total DESC;
++--------------------+----------+--------+
+| usuario            | idPedido | total  |
++--------------------+----------+--------+
+| Paula Morales      |       14 | 174.42 |
+| Isabella Mendoza   |       20 | 164.43 |
+| Tomás Guerrero     |       23 | 133.05 |
+| Manuela Salazar    |       26 | 124.71 |
+| Laura Torres       |        8 | 124.41 |
+| Camila Rodríguez   |        2 | 123.45 |
+| Julián Reyes       |       17 | 120.03 |
+| Juan Gómez         |        1 | 119.66 |
+| David Ruiz         |       19 | 113.00 |
+| Valentina Martínez |        4 | 108.84 |
+| Esteban Aguilar    |       25 | 100.98 |
+| Felipe Hernández   |        7 |  94.52 |
+| Sofía Díaz         |       10 |  91.26 |
+| Gabriela Herrera   |       22 |  91.10 |
+| Camilo Cárdenas    |       28 |  82.40 |
+| Sebastián Rojas    |       13 |  76.28 |
+| Nicolás Castro     |       11 |  73.35 |
+| Santiago López     |        5 |  61.35 |
+| Natalia Vargas     |       16 |  61.06 |
+| Andrea Pardo       |       29 |  60.03 |
+| Andrés Pérez       |        3 |  58.83 |
+| Alejandro Suárez   |       15 |  55.02 |
+| Ricardo Restrepo   |       27 |  51.14 |
+| Mariana García     |        6 |  48.82 |
+| Daniela Ortiz      |       12 |  37.38 |
+| Juliana Navarro    |       30 |  32.96 |
+| Miguel Cruz        |       21 |  31.93 |
+| Diego Ramírez      |        9 |  30.66 |
+| Carolina Jiménez   |       18 |  27.14 |
++--------------------+----------+--------+
+29 rows in set (0.001 sec)
+
+MariaDB [elite_games]>

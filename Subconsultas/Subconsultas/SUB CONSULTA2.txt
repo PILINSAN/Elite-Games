@@ -1,0 +1,20 @@
+::Requisito funcional: El sistema debe identificar el juego más caro registrado en la tabla juego_plataforma.
+::Enunciado: Mostrar el nombre del juego, la categoría y el precio del juego con el precio más alto de todos.
+
+MariaDB [elite_games]> SELECT j.nombre AS juego,
+    ->        c.nombre AS categoria,
+    ->        jp.precio
+    -> FROM juegos j
+    -> INNER JOIN categorias c ON j.idCategoria = c.idCategoria
+    -> INNER JOIN juego_plataforma jp ON j.idJuego = jp.idJuego
+    -> WHERE jp.precio = (
+    ->     SELECT MAX(precio) FROM juego_plataforma
+    -> );
++--------------+-----------+--------+
+| juego        | categoria | precio |
++--------------+-----------+--------+
+| Colonia Zero | Casual    |  69.84 |
++--------------+-----------+--------+
+1 row in set (0.001 sec)
+
+MariaDB [elite_games]>
