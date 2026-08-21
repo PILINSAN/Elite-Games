@@ -1,0 +1,56 @@
+MariaDB [elite_games]> USE elite_games;
+Database changed
+MariaDB [elite_games]> SHOW TABLES;
++-----------------------+
+| Tables_in_elite_games |
++-----------------------+
+| admin_juego           |
+| administradores       |
+| categorias            |
+| detalle_pedido        |
+| inventario            |
+| juego_plataforma      |
+| juegos                |
+| pagos                 |
+| pedidos               |
+| plataformas           |
+| pqrs                  |
+| proveedores           |
+| resenas               |
+| usuarios              |
++-----------------------+
+14 rows in set (0.002 sec)
+
+MariaDB [elite_games]> SELECT 'usuarios' AS tabla, COUNT(*) AS registros FROM usuarios
+    -> UNION ALL SELECT 'administradores', COUNT(*) FROM administradores
+    -> UNION ALL SELECT 'proveedores', COUNT(*) FROM proveedores
+    -> UNION ALL SELECT 'plataformas', COUNT(*) FROM plataformas
+    -> UNION ALL SELECT 'categorias', COUNT(*) FROM categorias
+    -> UNION ALL SELECT 'juegos', COUNT(*) FROM juegos
+    -> UNION ALL SELECT 'admin_juego', COUNT(*) FROM admin_juego
+    -> UNION ALL SELECT 'juego_plataforma', COUNT(*) FROM juego_plataforma
+    -> UNION ALL SELECT 'pedidos', COUNT(*) FROM pedidos
+    -> UNION ALL SELECT 'pqrs', COUNT(*) FROM pqrs
+    -> UNION ALL SELECT 'detalle_pedido', COUNT(*) FROM detalle_pedido
+    -> UNION ALL SELECT 'inventario', COUNT(*) FROM inventario
+    -> UNION ALL SELECT 'pagos', COUNT(*) FROM pagos
+    -> UNION ALL SELECT 'resenas', COUNT(*) FROM resenas;
++------------------+-----------+
+| tabla            | registros |
++------------------+-----------+
+| usuarios         |        30 |
+| administradores  |        30 |
+| proveedores      |        30 |
+| plataformas      |        30 |
+| categorias       |        30 |
+| juegos           |        30 |
+| admin_juego      |        30 |
+| juego_plataforma |        30 |
+| pedidos          |        30 |
+| pqrs             |        30 |
+| detalle_pedido   |        30 |
+| inventario       |        30 |
+| pagos            |        30 |
+| resenas          |        30 |
++------------------+-----------+
+14 rows in set (0.043 sec)
