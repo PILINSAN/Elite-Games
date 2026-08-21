@@ -1,0 +1,310 @@
+
+MariaDB [elite_games]> USE elite_games;
+Database changed
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 1. USUARIOS
+MariaDB [elite_games]> INSERT INTO usuarios (idUsuario, nombre, apellido, email, contrasena, fecha_registro) VALUES
+    -> (1, 'Juan', 'G¢mez', 'juan.gomez1@correo.com', 'Pass1001!', '2024-01-04 09:07:00'),
+    -> (2, 'Camila', 'Rodr¡guez', 'camila.rodriguez2@correo.com', 'Pass1002!', '2024-02-07 10:14:00'),
+    -> (3, 'Andr‚s', 'P‚rez', 'andres.perez3@correo.com', 'Pass1003!', '2024-03-10 11:21:00'),
+    -> (4, 'Valentina', 'Mart¡nez', 'valentina.martinez4@correo.com', 'Pass1004!', '2024-04-13 12:28:00'),
+    -> (5, 'Santiago', 'L¢pez', 'santiago.lopez5@correo.com', 'Pass1005!', '2024-05-16 13:35:00'),
+    -> (6, 'Mariana', 'Garc¡a', 'mariana.garcia6@correo.com', 'Pass1006!', '2024-06-19 14:42:00'),
+    -> (7, 'Felipe', 'Hern ndez', 'felipe.hernandez7@correo.com', 'Pass1007!', '2024-07-22 15:49:00'),
+    -> (8, 'Laura', 'Torres', 'laura.torres8@correo.com', 'Pass1008!', '2024-08-25 16:56:00'),
+    -> (9, 'Diego', 'Ram¡rez', 'diego.ramirez9@correo.com', 'Pass1009!', '2024-09-28 17:03:00'),
+    -> (10, 'Sof¡a', 'D¡az', 'sofia.diaz10@correo.com', 'Pass1010!', '2024-10-03 08:10:00'),
+    -> (11, 'Nicol s', 'Castro', 'nicolas.castro11@correo.com', 'Pass1011!', '2024-11-06 09:17:00'),
+    -> (12, 'Daniela', 'Ortiz', 'daniela.ortiz12@correo.com', 'Pass1012!', '2024-12-09 10:24:00'),
+    -> (13, 'Sebasti n', 'Rojas', 'sebastian.rojas13@correo.com', 'Pass1013!', '2024-01-12 11:31:00'),
+    -> (14, 'Paula', 'Morales', 'paula.morales14@correo.com', 'Pass1014!', '2024-02-15 12:38:00'),
+    -> (15, 'Alejandro', 'Su rez', 'alejandro.suarez15@correo.com', 'Pass1015!', '2024-03-18 13:45:00'),
+    -> (16, 'Natalia', 'Vargas', 'natalia.vargas16@correo.com', 'Pass1016!', '2024-04-21 14:52:00'),
+    -> (17, 'Juli n', 'Reyes', 'julian.reyes17@correo.com', 'Pass1017!', '2024-05-24 15:59:00'),
+    -> (18, 'Carolina', 'Jim‚nez', 'carolina.jimenez18@correo.com', 'Pass1018!', '2024-06-27 16:06:00'),
+    -> (19, 'David', 'Ruiz', 'david.ruiz19@correo.com', 'Pass1019!', '2024-07-02 17:13:00'),
+    -> (20, 'Isabella', 'Mendoza', 'isabella.mendoza20@correo.com', 'Pass1020!', '2024-08-05 08:20:00'),
+    -> (21, 'Miguel', 'Cruz', 'miguel.cruz21@correo.com', 'Pass1021!', '2024-09-08 09:27:00'),
+    -> (22, 'Gabriela', 'Herrera', 'gabriela.herrera22@correo.com', 'Pass1022!', '2024-10-11 10:34:00'),
+    -> (23, 'Tom s', 'Guerrero', 'tomas.guerrero23@correo.com', 'Pass1023!', '2024-11-14 11:41:00'),
+    -> (24, 'Valeria', 'Molina', 'valeria.molina24@correo.com', 'Pass1024!', '2024-12-17 12:48:00'),
+    -> (25, 'Esteban', 'Aguilar', 'esteban.aguilar25@correo.com', 'Pass1025!', '2024-01-20 13:55:00'),
+    -> (26, 'Manuela', 'Salazar', 'manuela.salazar26@correo.com', 'Pass1026!', '2024-02-23 14:02:00'),
+    -> (27, 'Ricardo', 'Restrepo', 'ricardo.restrepo27@correo.com', 'Pass1027!', '2024-03-26 15:09:00'),
+    -> (28, 'Camilo', 'C rdenas', 'camilo.cardenas28@correo.com', 'Pass1028!', '2024-04-01 16:16:00'),
+    -> (29, 'Andrea', 'Pardo', 'andrea.pardo29@correo.com', 'Pass1029!', '2024-05-04 17:23:00'),
+    -> (30, 'Juliana', 'Navarro', 'juliana.navarro30@correo.com', 'Pass1030!', '2024-06-07 08:30:00');
+Query OK, 30 rows affected (0.229 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 2. ADMINISTRADORES
+MariaDB [elite_games]> INSERT INTO administradores (idAdmin, nombre, apellido, email, contrasena, rol, fecha_creacion) VALUES
+    -> (1, 'Laura', 'Pe¤a', 'laura.pena1@eliteadmin.com', 'Adm2001#', 'catalogo', '2023-01-06 10:11:00'),
+    -> (2, 'Carlos', 'Vega', 'carlos.vega2@eliteadmin.com', 'Adm2002#', 'superadmin', '2023-02-11 11:22:00'),
+    -> (3, 'Marcela', 'Cort‚s', 'marcela.cortes3@eliteadmin.com', 'Adm2003#', 'soporte', '2023-03-16 12:33:00'),
+    -> (4, 'Fernando', 'Duarte', 'fernando.duarte4@eliteadmin.com', 'Adm2004#', 'catalogo', '2023-04-21 13:44:00'),
+    -> (5, 'Patricia', 'Silva', 'patricia.silva5@eliteadmin.com', 'Adm2005#', 'superadmin', '2023-05-26 14:55:00'),
+    -> (6, 'Iv n', 'Franco', 'ivan.franco6@eliteadmin.com', 'Adm2006#', 'soporte', '2023-06-03 15:06:00'),
+    -> (7, 'Claudia', 'Berm£dez', 'claudia.bermudez7@eliteadmin.com', 'Adm2007#', 'catalogo', '2023-07-08 16:17:00'),
+    -> (8, 'àscar', 'Escobar', 'oscar.escobar8@eliteadmin.com', 'Adm2008#', 'superadmin', '2023-08-13 09:28:00'),
+    -> (9, 'Sandra', 'Zapata', 'sandra.zapata9@eliteadmin.com', 'Adm2009#', 'soporte', '2023-09-18 10:39:00'),
+    -> (10, 'H‚ctor', 'Meza', 'hector.meza10@eliteadmin.com', 'Adm2010#', 'catalogo', '2023-10-23 11:50:00'),
+    -> (11, 'Luc¡a', 'Cabrera', 'lucia.cabrera11@eliteadmin.com', 'Adm2011#', 'superadmin', '2023-11-28 12:01:00'),
+    -> (12, 'Ra£l', 'Delgado', 'raul.delgado12@eliteadmin.com', 'Adm2012#', 'soporte', '2023-12-05 13:12:00'),
+    -> (13, 'Elena', 'Serrano', 'elena.serrano13@eliteadmin.com', 'Adm2013#', 'catalogo', '2023-01-10 14:23:00'),
+    -> (14, 'Jorge', 'Cifuentes', 'jorge.cifuentes14@eliteadmin.com', 'Adm2014#', 'superadmin', '2023-02-15 15:34:00'),
+    -> (15, 'Marta', 'Bautista', 'marta.bautista15@eliteadmin.com', 'Adm2015#', 'soporte', '2023-03-20 16:45:00'),
+    -> (16, 'µlvaro', 'Quintero', 'alvaro.quintero16@eliteadmin.com', 'Adm2016#', 'catalogo', '2023-04-25 09:56:00'),
+    -> (17, 'Teresa', 'Arango', 'teresa.arango17@eliteadmin.com', 'Adm2017#', 'superadmin', '2023-05-02 10:07:00'),
+    -> (18, 'Gustavo', 'Barreto', 'gustavo.barreto18@eliteadmin.com', 'Adm2018#', 'soporte', '2023-06-07 11:18:00'),
+    -> (19, 'Cristina', 'Cuervo', 'cristina.cuervo19@eliteadmin.com', 'Adm2019#', 'catalogo', '2023-07-12 12:29:00'),
+    -> (20, 'Rodrigo', 'Lozano', 'rodrigo.lozano20@eliteadmin.com', 'Adm2020#', 'superadmin', '2023-08-17 13:40:00'),
+    -> (21, 'Beatriz', 'Ospina', 'beatriz.ospina21@eliteadmin.com', 'Adm2021#', 'soporte', '2023-09-22 14:51:00'),
+    -> (22, 'Adri n', 'Betancur', 'adrian.betancur22@eliteadmin.com', 'Adm2022#', 'catalogo', '2023-10-27 15:02:00'),
+    -> (23, 'Silvia', 'Villalba', 'silvia.villalba23@eliteadmin.com', 'Adm2023#', 'superadmin', '2023-11-04 16:13:00'),
+    -> (24, 'Emilio', 'Contreras', 'emilio.contreras24@eliteadmin.com', 'Adm2024#', 'soporte', '2023-12-09 09:24:00'),
+    -> (25, 'Rosa', 'Pel ez', 'rosa.pelaez25@eliteadmin.com', 'Adm2025#', 'catalogo', '2023-01-14 10:35:00'),
+    -> (26, 'Enrique', 'Nieto', 'enrique.nieto26@eliteadmin.com', 'Adm2026#', 'superadmin', '2023-02-19 11:46:00'),
+    -> (27, 'Ver¢nica', 'Camacho', 'veronica.camacho27@eliteadmin.com', 'Adm2027#', 'soporte', '2023-03-24 12:57:00'),
+    -> (28, 'Pablo', 'Uribe', 'pablo.uribe28@eliteadmin.com', 'Adm2028#', 'catalogo', '2023-04-01 13:08:00'),
+    -> (29, 'Alicia', 'Pineda', 'alicia.pineda29@eliteadmin.com', 'Adm2029#', 'superadmin', '2023-05-06 14:19:00'),
+    -> (30, 'Mart¡n', 'Gil', 'martin.gil30@eliteadmin.com', 'Adm2030#', 'soporte', '2023-06-11 15:30:00');
+Query OK, 30 rows affected (0.140 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 3. PROVEEDORES
+MariaDB [elite_games]> INSERT INTO proveedores (idProveedor, razon_social, telefono, pais, activo) VALUES
+    -> (1, 'N‚bula Studios SAS', '+57 301 125 5506', 'M‚xico', 1),
+    -> (2, 'Pixel Forge Games', '+57 303 328 3286', 'Argentina', 1),
+    -> (3, 'Estudio C¢ndor Digital', '+57 301 792 9935', 'Chile', 1),
+    -> (4, 'RetroWave Interactive', '+57 301 704 7912', 'Espa¤a', 1),
+    -> (5, 'Quantum Play Studios', '+57 300 130 2535', 'Estados Unidos', 1),
+    -> (6, 'Estudio Guacamaya', '+57 303 338 9279', 'Brasil', 1),
+    -> (7, 'Drag¢n Rojo Games', '+57 309 127 4257', 'Per£', 0),
+    -> (8, 'Estudio Andes Interactivo', '+57 308 529 4611', 'Uruguay', 1),
+    -> (9, 'Nova Sur Entertainment', '+57 307 703 5557', 'Canad ', 1),
+    -> (10, 'Estudio Cascabel', '+57 300 877 3615', 'Colombia', 1),
+    -> (11, 'Horizonte Digital Games', '+57 306 448 5552', 'M‚xico', 1),
+    -> (12, 'Estudio Tuc n', '+57 302 320 6514', 'Argentina', 1),
+    -> (13, 'Silverline Interactive', '+57 301 194 7224', 'Chile', 1),
+    -> (14, 'Estudio Jaguar Negro', '+57 301 467 6635', 'Espa¤a', 0),
+    -> (15, 'Meridian Games Co.', '+57 309 370 1711', 'Estados Unidos', 1),
+    -> (16, 'Estudio Colibr¡', '+57 307 649 3045', 'Brasil', 1),
+    -> (17, 'Vortex Play Studios', '+57 306 180 5803', 'Per£', 1),
+    -> (18, 'Estudio Puma Digital', '+57 309 982 6925', 'Uruguay', 1),
+    -> (19, 'Aurora Byte Games', '+57 309 296 2139', 'Canad ', 1),
+    -> (20, 'Estudio Manglar', '+57 300 777 4733', 'Colombia', 1),
+    -> (21, 'Estudio P ramo Games', '+57 304 181 4814', 'M‚xico', 0),
+    -> (22, 'Ironclad Sur Studios', '+57 301 489 5554', 'Argentina', 1),
+    -> (23, 'Estudio Caim n Digital', '+57 307 750 6977', 'Chile', 1),
+    -> (24, 'Solsticio Interactive', '+57 302 479 6820', 'Espa¤a', 1),
+    -> (25, 'Estudio Orqu¡dea', '+57 303 786 5374', 'Estados Unidos', 1),
+    -> (26, 'Estelar Play Co.', '+57 301 723 3803', 'Brasil', 1),
+    -> (27, 'Estudio Anaconda Games', '+57 308 846 5010', 'Per£', 1),
+    -> (28, 'Rumbo Norte Studios', '+57 302 573 7216', 'Uruguay', 0),
+    -> (29, 'Estudio Quetzal Digital', '+57 304 755 4598', 'Canad ', 1),
+    -> (30, 'Fenix Sur Interactive', '+57 305 963 1916', 'Colombia', 1);
+Query OK, 30 rows affected (0.056 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 4. PLATAFORMAS
+MariaDB [elite_games]> INSERT INTO plataformas (idPlataforma, nombre) VALUES
+    -> (1, 'PlayStation 5'),(2, 'PlayStation 4'),(3, 'Xbox Series X'),(4, 'Xbox Series S'),(5, 'Xbox One'),
+    -> (6, 'Nintendo Switch'),(7, 'Nintendo Switch OLED'),(8, 'Nintendo Switch Lite'),(9, 'PC - Steam'),(10, 'PC - Epic Games'),
+    -> (11, 'PC - GOG'),(12, 'PC - EA App'),(13, 'PC - Ubisoft Connect'),(14, 'PC - Battle.net'),(15, 'PC - Microsoft Store'),
+    -> (16, 'Amazon Luna'),(17, 'Mobile - Android'),(18, 'Mobile - iOS'),(19, 'PlayStation VR2'),(20, 'Meta Quest 3'),
+    -> (21, 'Meta Quest 2'),(22, 'Steam Deck'),(23, 'ROG Ally'),(24, 'PlayStation 3'),(25, 'Xbox 360'),
+    -> (26, 'Wii U'),(27, 'Nintendo 3DS'),(28, 'PlayStation Vita'),(29, 'Nvidia Shield'),(30, 'Mac App Store');
+Query OK, 30 rows affected (0.132 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 5. CATEGORIAS
+MariaDB [elite_games]> INSERT INTO categorias (idCategoria, nombre, descripcion) VALUES
+    -> (1, 'Acci¢n', 'Juegos del g‚nero acci¢n'),(2, 'Aventura', 'Juegos del g‚nero aventura'),(3, 'RPG', 'Juegos del g‚nero rpg'),
+    -> (4, 'Estrategia', 'Juegos del g‚nero estrategia'),(5, 'Deportes', 'Juegos del g‚nero deportes'),(6, 'Carreras', 'Juegos del g‚nero carreras'),
+    -> (7, 'Simulaci¢n', 'Juegos del g‚nero simulaci¢n'),(8, 'Puzzle', 'Juegos del g‚nero puzzle'),(9, 'Terror', 'Juegos del g‚nero terror'),
+    -> (10, 'Shooter', 'Juegos del g‚nero shooter'),(11, 'Plataformas', 'Juegos del g‚nero plataformas'),(12, 'Lucha', 'Juegos del g‚nero lucha'),
+    -> (13, 'Sigilo', 'Juegos del g‚nero sigilo'),(14, 'Mundo Abierto', 'Juegos del g‚nero mundo abierto'),(15, 'Battle Royale', 'Juegos del g‚nero battle royale'),
+    -> (16, 'MOBA', 'Juegos del g‚nero moba'),(17, 'Sandbox', 'Juegos del g‚nero sandbox'),(18, 'Musical y Ritmo', 'Juegos del g‚nero musical y ritmo'),
+    -> (19, 'Party Game', 'Juegos del g‚nero party game'),(20, 'Educativo', 'Juegos del g‚nero educativo'),(21, 'Casual', 'Juegos del g‚nero casual'),
+    -> (22, 'Roguelike', 'Juegos del g‚nero roguelike'),(23, 'Metroidvania', 'Juegos del g‚nero metroidvania'),(24, 'Survival', 'Juegos del g‚nero survival'),
+    -> (25, 'Hack and Slash', 'Juegos del g‚nero hack and slash'),(26, 'Novela Visual', 'Juegos del g‚nero novela visual'),(27, 'Cartas y Estrategia por Turnos', 'Juegos del g‚nero cartas y estrategia por turnos'),
+    -> (28, 'Deportes Extremos', 'Juegos del g‚nero deportes extremos'),(29, 'Ciencia Ficci¢n', 'Juegos del g‚nero ciencia ficci¢n'),(30, 'Fantas¡a', 'Juegos del g‚nero fantas¡a');
+Query OK, 30 rows affected (0.082 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 6. JUEGOS
+MariaDB [elite_games]> INSERT INTO juegos (idJuego, nombre, descripcion, desarrollador, fecha_lanzamiento, imagen_url, idProveedor, idCategoria) VALUES
+    -> (1, 'Drag¢n de Acero', 'Videojuego de acci¢n desarrollado para m£ltiples plataformas.', 'N‚bula Studios SAS', '2016-04-08', 'https://cdn.elitegames.com/juegos/juego1.jpg', 1, 1),
+    -> (2, 'Sombras del Imperio', 'Videojuego de aventura desarrollado para m£ltiples plataformas.', 'Pixel Forge Games', '2017-07-15', 'https://cdn.elitegames.com/juegos/juego2.jpg', 2, 2),
+    -> (3, 'Velocidad Extrema 2099', 'Videojuego de rpg desarrollado para m£ltiples plataformas.', 'Estudio C¢ndor Digital', '2018-10-22', 'https://cdn.elitegames.com/juegos/juego3.jpg', 3, 3),
+    -> (4, 'Reino Perdido', 'Videojuego de estrategia desarrollado para m£ltiples plataformas.', 'RetroWave Interactive', '2019-01-01', 'https://cdn.elitegames.com/juegos/juego4.jpg', 4, 4),
+    -> (5, 'Guardianes del Abismo', 'Videojuego de deportes desarrollado para m£ltiples plataformas.', 'Quantum Play Studios', '2020-04-08', 'https://cdn.elitegames.com/juegos/juego5.jpg', 5, 5),
+    -> (6, 'Furia Mec nica', 'Videojuego de carreras desarrollado para m£ltiples plataformas.', 'Estudio Guacamaya', '2021-07-15', 'https://cdn.elitegames.com/juegos/juego6.jpg', 6, 6),
+    -> (7, 'Cr¢nicas de Eldoria', 'Videojuego de simulaci¢n desarrollado para m£ltiples plataformas.', 'Drag¢n Rojo Games', '2022-10-22', 'https://cdn.elitegames.com/juegos/juego7.jpg', 7, 7),
+    -> (8, 'Estaci¢n Fantasma', 'Videojuego de puzzle desarrollado para m£ltiples plataformas.', 'Estudio Andes Interactivo', '2023-01-01', 'https://cdn.elitegames.com/juegos/juego8.jpg', 8, 8),
+    -> (9, 'Legado de Hierro', 'Videojuego de terror desarrollado para m£ltiples plataformas.', 'Nova Sur Entertainment', '2024-04-08', 'https://cdn.elitegames.com/juegos/juego9.jpg', 9, 9),
+    -> (10, 'Tormenta Carmes¡', 'Videojuego de shooter desarrollado para m£ltiples plataformas.', 'Estudio Cascabel', '2015-07-15', 'https://cdn.elitegames.com/juegos/juego10.jpg', 10, 10),
+    -> (11, 'Imperio de Cenizas', 'Videojuego de plataformas desarrollado para m£ltiples plataformas.', 'Horizonte Digital Games', '2016-10-22', 'https://cdn.elitegames.com/juegos/juego11.jpg', 11, 11),
+    -> (12, 'Rutas del Vac¡o', 'Videojuego de lucha desarrollado para m£ltiples plataformas.', 'Estudio Tuc n', '2017-01-01', 'https://cdn.elitegames.com/juegos/juego12.jpg', 12, 12),
+    -> (13, 'Naci¢n Salvaje', 'Videojuego de sigilo desarrollado para m£ltiples plataformas.', 'Silverline Interactive', '2018-04-08', 'https://cdn.elitegames.com/juegos/juego13.jpg', 13, 13),
+    -> (14, 'Eco del Silencio', 'Videojuego de mundo abierto desarrollado para m£ltiples plataformas.', 'Estudio Jaguar Negro', '2019-07-15', 'https://cdn.elitegames.com/juegos/juego14.jpg', 14, 14),
+    -> (15, 'Titanes de Ne¢n', 'Videojuego de battle royale desarrollado para m£ltiples plataformas.', 'Meridian Games Co.', '2020-10-22', 'https://cdn.elitegames.com/juegos/juego15.jpg', 15, 15),
+    -> (16, 'Caminos Perdidos', 'Videojuego de moba desarrollado para m£ltiples plataformas.', 'Estudio Colibr¡', '2021-01-01', 'https://cdn.elitegames.com/juegos/juego16.jpg', 16, 16),
+    -> (17, 'Fortaleza Eterna', 'Videojuego de sandbox desarrollado para m£ltiples plataformas.', 'Vortex Play Studios', '2022-04-08', 'https://cdn.elitegames.com/juegos/juego17.jpg', 17, 17),
+    -> (18, 'Susurros del Bosque', 'Videojuego de musical y ritmo desarrollado para m£ltiples plataformas.', 'Estudio Puma Digital', '2023-07-15', 'https://cdn.elitegames.com/juegos/juego18.jpg', 18, 18),
+    -> (19, 'Alba de Sangre', 'Videojuego de party game desarrollado para m£ltiples plataformas.', 'Aurora Byte Games', '2024-10-22', 'https://cdn.elitegames.com/juegos/juego19.jpg', 19, 19),
+    -> (20, 'Rebeli¢n Estelar', 'Videojuego de educativo desarrollado para m£ltiples plataformas.', 'Estudio Manglar', '2015-01-01', 'https://cdn.elitegames.com/juegos/juego20.jpg', 20, 20),
+    -> (21, 'Colonia Zero', 'Videojuego de casual desarrollado para m£ltiples plataformas.', 'Estudio P ramo Games', '2016-04-08', 'https://cdn.elitegames.com/juegos/juego21.jpg', 21, 21),
+    -> (22, 'Vestigios del Norte', 'Videojuego de roguelike desarrollado para m£ltiples plataformas.', 'Ironclad Sur Studios', '2017-07-15', 'https://cdn.elitegames.com/juegos/juego22.jpg', 22, 22),
+    -> (23, 'Cazadores de Sombra', 'Videojuego de metroidvania desarrollado para m£ltiples plataformas.', 'Estudio Caim n Digital', '2018-10-22', 'https://cdn.elitegames.com/juegos/juego23.jpg', 23, 23),
+    -> (24, 'Reino de Cristal', 'Videojuego de survival desarrollado para m£ltiples plataformas.', 'Solsticio Interactive', '2019-01-01', 'https://cdn.elitegames.com/juegos/juego24.jpg', 24, 24),
+    -> (25, 'éltima Frontera', 'Videojuego de hack and slash desarrollado para m£ltiples plataformas.', 'Estudio Orqu¡dea', '2020-04-08', 'https://cdn.elitegames.com/juegos/juego25.jpg', 25, 25),
+    -> (26, 'Marea Oscura', 'Videojuego de novela visual desarrollado para m£ltiples plataformas.', 'Estelar Play Co.', '2021-07-15', 'https://cdn.elitegames.com/juegos/juego26.jpg', 26, 26),
+    -> (27, 'Horizonte Roto', 'Videojuego de cartas y estrategia por turnos desarrollado para m£ltiples plataformas.', 'Estudio Anaconda Games', '2022-10-22', 'https://cdn.elitegames.com/juegos/juego27.jpg', 27, 27),
+    -> (28, 'Esp¡ritu de Acero', 'Videojuego de deportes extremos desarrollado para m£ltiples plataformas.', 'Rumbo Norte Studios', '2023-01-01', 'https://cdn.elitegames.com/juegos/juego28.jpg', 28, 28),
+    -> (29, 'Laberinto Infinito', 'Videojuego de ciencia ficci¢n desarrollado para m£ltiples plataformas.', 'Estudio Quetzal Digital', '2024-04-08', 'https://cdn.elitegames.com/juegos/juego29.jpg', 29, 29),
+    -> (30, 'Constelaci¢n Perdida', 'Videojuego de fantas¡a desarrollado para m£ltiples plataformas.', 'Fenix Sur Interactive', '2015-07-15', 'https://cdn.elitegames.com/juegos/juego30.jpg', 30, 30);
+Query OK, 30 rows affected (0.127 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 7. ADMIN_JUEGO
+MariaDB [elite_games]> INSERT INTO admin_juego (idAdmin, idJuego) VALUES
+    -> (1,1),(2,8),(3,15),(4,22),(5,29),(6,6),(7,13),(8,20),(9,27),(10,4),
+    -> (11,11),(12,18),(13,25),(14,2),(15,9),(16,16),(17,23),(18,30),(19,7),(20,14),
+    -> (21,21),(22,28),(23,5),(24,12),(25,19),(26,26),(27,3),(28,10),(29,17),(30,24);
+Query OK, 30 rows affected (0.064 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 8. JUEGO_PLATAFORMA
+MariaDB [elite_games]> INSERT INTO juego_plataforma (idJuego, idPlataforma, precio) VALUES
+    -> (1,1,23.73),(2,12,11.92),(3,23,28.92),(4,4,26.05),(5,15,22.65),(6,26,66.56),(7,7,62.57),(8,18,28.87),(9,29,49.32),(10,10,33.73),
+    -> (11,21,64.86),(12,2,37.52),(13,13,25.88),(14,24,24.79),(15,5,43.67),(16,16,25.75),(17,27,45.07),(18,8,63.86),(19,19,33.95),(20,30,23.15),
+    -> (21,11,69.84),(22,22,40.56),(23,3,15.44),(24,14,12.82),(25,25,16.57),(26,6,47.64),(27,17,57.51),(28,28,35.32),(29,9,13.80),(30,20,32.89);
+Query OK, 30 rows affected (0.548 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 9. PEDIDOS
+MariaDB [elite_games]> INSERT INTO pedidos (idPedido, idUsuario, fecha_pedido, total, estado) VALUES
+    -> (1,1,'2024-01-03 11:13:00',119.66,'pagado'),(2,2,'2024-02-05 12:26:00',123.45,'enviado'),(3,3,'2024-03-07 13:39:00',58.83,'completado'),
+    -> (4,4,'2024-04-09 14:52:00',108.84,'cancelado'),(5,5,'2024-05-11 15:05:00',61.35,'pendiente'),(6,6,'2024-06-13 16:18:00',48.82,'pagado'),
+    -> (7,7,'2024-07-15 17:31:00',94.52,'enviado'),(8,8,'2024-08-17 18:44:00',124.41,'completado'),(9,9,'2024-09-19 19:57:00',30.66,'cancelado'),
+    -> (10,10,'2024-10-21 10:10:00',91.26,'pendiente'),(11,11,'2024-11-23 11:23:00',73.35,'pagado'),(12,12,'2024-12-25 12:36:00',37.38,'enviado'),
+    -> (13,13,'2024-01-27 13:49:00',76.28,'completado'),(14,14,'2024-02-01 14:02:00',174.42,'cancelado'),(15,15,'2024-03-03 15:15:00',55.02,'pendiente'),
+    -> (16,16,'2024-04-05 16:28:00',61.06,'pagado'),(17,17,'2024-05-07 17:41:00',120.03,'enviado'),(18,18,'2024-06-09 18:54:00',27.14,'completado'),
+    -> (19,19,'2024-07-11 19:07:00',113.00,'cancelado'),(20,20,'2024-08-13 10:20:00',164.43,'pendiente'),(21,21,'2024-09-15 11:33:00',31.93,'pagado'),
+    -> (22,22,'2024-10-17 12:46:00',91.10,'enviado'),(23,23,'2024-11-19 13:59:00',133.05,'completado'),(24,24,'2024-12-21 14:12:00',26.10,'cancelado'),
+    -> (25,25,'2024-01-23 15:25:00',100.98,'pendiente'),(26,26,'2024-02-25 16:38:00',124.71,'pagado'),(27,27,'2024-03-27 17:51:00',51.14,'enviado'),
+    -> (28,28,'2024-04-01 18:04:00',82.40,'completado'),(29,29,'2024-05-03 19:17:00',60.03,'cancelado'),(30,30,'2024-06-05 10:30:00',32.96,'pendiente');
+Query OK, 30 rows affected (0.200 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 10. PQRS
+MariaDB [elite_games]> INSERT INTO pqrs (idPQRS, idUsuario, idJuego, idPedido, idAdmin, tipo, asunto, descripcion, nroRadicado, estado, respuesta, fechaRegistro, fechaRespuesta) VALUES
+    -> (1,1,1,1,1,'queja','Queja sobre pedido/juego #1','Descripci¢n detallada del queja n£mero 1 registrado por el usuario.','RAD-20240001','en_proceso','En proceso de revisi¢n por el  rea correspondiente.','2024-01-05 09:17:00',NULL),
+    -> (2,2,2,2,2,'reclamo','Reclamo sobre pedido/juego #2','Descripci¢n detallada del reclamo n£mero 2 registrado por el usuario.','RAD-20240002','cerrado','Caso 2 resuelto satisfactoriamente.','2024-02-09 10:34:00','2024-02-12 11:38:00'),
+    -> (3,3,NULL,3,NULL,'sugerencia','Sugerencia sobre pedido/juego #3','Descripci¢n detallada del sugerencia n£mero 3 registrado por el usuario.','RAD-20240003','abierto',NULL,'2024-03-13 11:51:00',NULL),
+    -> (4,4,4,NULL,4,'peticion','Peticion sobre pedido/juego #4','Descripci¢n detallada del peticion n£mero 4 registrado por el usuario.','RAD-20240004','en_proceso','En proceso de revisi¢n por el  rea correspondiente.','2024-04-17 12:08:00',NULL),
+    -> (5,5,5,5,5,'queja','Queja sobre pedido/juego #5','Descripci¢n detallada del queja n£mero 5 registrado por el usuario.','RAD-20240005','cerrado','Caso 5 resuelto satisfactoriamente.','2024-05-21 13:25:00','2024-05-24 14:35:00'),
+    -> (6,6,NULL,6,NULL,'reclamo','Reclamo sobre pedido/juego #6','Descripci¢n detallada del reclamo n£mero 6 registrado por el usuario.','RAD-20240006','abierto',NULL,'2024-06-25 14:42:00',NULL),
+    -> (7,7,7,7,7,'sugerencia','Sugerencia sobre pedido/juego #7','Descripci¢n detallada del sugerencia n£mero 7 registrado por el usuario.','RAD-20240007','en_proceso','En proceso de revisi¢n por el  rea correspondiente.','2024-07-01 15:59:00',NULL),
+    -> (8,8,8,NULL,8,'peticion','Peticion sobre pedido/juego #8','Descripci¢n detallada del peticion n£mero 8 registrado por el usuario.','RAD-20240008','cerrado','Caso 8 resuelto satisfactoriamente.','2024-08-05 16:16:00','2024-08-08 17:32:00'),
+    -> (9,9,NULL,9,NULL,'queja','Queja sobre pedido/juego #9','Descripci¢n detallada del queja n£mero 9 registrado por el usuario.','RAD-20240009','abierto',NULL,'2024-09-09 08:33:00',NULL),
+    -> (10,10,10,10,10,'reclamo','Reclamo sobre pedido/juego #10','Descripci¢n detallada del reclamo n£mero 10 registrado por el usuario.','RAD-20240010','en_proceso','En proceso de revisi¢n por el  rea correspondiente.','2024-10-13 09:50:00',NULL),
+    -> (11,11,11,11,11,'sugerencia','Sugerencia sobre pedido/juego #11','Descripci¢n detallada del sugerencia n£mero 11 registrado por el usuario.','RAD-20240011','cerrado','Caso 11 resuelto satisfactoriamente.','2024-11-17 10:07:00','2024-11-20 11:29:00'),
+    -> (12,12,NULL,NULL,NULL,'peticion','Peticion sobre pedido/juego #12','Descripci¢n detallada del peticion n£mero 12 registrado por el usuario.','RAD-20240012','abierto',NULL,'2024-12-21 11:24:00',NULL),
+    -> (13,13,13,13,13,'queja','Queja sobre pedido/juego #13','Descripci¢n detallada del queja n£mero 13 registrado por el usuario.','RAD-20240013','en_proceso','En proceso de revisi¢n por el  rea correspondiente.','2024-01-25 12:41:00',NULL),
+    -> (14,14,14,14,14,'reclamo','Reclamo sobre pedido/juego #14','Descripci¢n detallada del reclamo n£mero 14 registrado por el usuario.','RAD-20240014','cerrado','Caso 14 resuelto satisfactoriamente.','2024-02-01 13:58:00','2024-02-04 14:26:00'),
+    -> (15,15,NULL,15,NULL,'sugerencia','Sugerencia sobre pedido/juego #15','Descripci¢n detallada del sugerencia n£mero 15 registrado por el usuario.','RAD-20240015','abierto',NULL,'2024-03-05 14:15:00',NULL),
+    -> (16,16,16,NULL,16,'peticion','Peticion sobre pedido/juego #16','Descripci¢n detallada del peticion n£mero 16 registrado por el usuario.','RAD-20240016','en_proceso','En proceso de revisi¢n por el  rea correspondiente.','2024-04-09 15:32:00',NULL),
+    -> (17,17,17,17,17,'queja','Queja sobre pedido/juego #17','Descripci¢n detallada del queja n£mero 17 registrado por el usuario.','RAD-20240017','cerrado','Caso 17 resuelto satisfactoriamente.','2024-05-13 16:49:00','2024-05-16 17:23:00'),
+    -> (18,18,NULL,18,NULL,'reclamo','Reclamo sobre pedido/juego #18','Descripci¢n detallada del reclamo n£mero 18 registrado por el usuario.','RAD-20240018','abierto',NULL,'2024-06-17 08:06:00',NULL),
+    -> (19,19,19,19,19,'sugerencia','Sugerencia sobre pedido/juego #19','Descripci¢n detallada del sugerencia n£mero 19 registrado por el usuario.','RAD-20240019','en_proceso','En proceso de revisi¢n por el  rea correspondiente.','2024-07-21 09:23:00',NULL),
+    -> (20,20,20,NULL,20,'peticion','Peticion sobre pedido/juego #20','Descripci¢n detallada del peticion n£mero 20 registrado por el usuario.','RAD-20240020','cerrado','Caso 20 resuelto satisfactoriamente.','2024-08-25 10:40:00','2024-08-28 11:20:00'),
+    -> (21,21,NULL,21,NULL,'queja','Queja sobre pedido/juego #21','Descripci¢n detallada del queja n£mero 21 registrado por el usuario.','RAD-20240021','abierto',NULL,'2024-09-01 11:57:00',NULL),
+    -> (22,22,22,22,22,'reclamo','Reclamo sobre pedido/juego #22','Descripci¢n detallada del reclamo n£mero 22 registrado por el usuario.','RAD-20240022','en_proceso','En proceso de revisi¢n por el  rea correspondiente.','2024-10-05 12:14:00',NULL),
+    -> (23,23,23,23,23,'sugerencia','Sugerencia sobre pedido/juego #23','Descripci¢n detallada del sugerencia n£mero 23 registrado por el usuario.','RAD-20240023','cerrado','Caso 23 resuelto satisfactoriamente.','2024-11-09 13:31:00','2024-11-12 14:17:00'),
+    -> (24,24,NULL,NULL,NULL,'peticion','Peticion sobre pedido/juego #24','Descripci¢n detallada del peticion n£mero 24 registrado por el usuario.','RAD-20240024','abierto',NULL,'2024-12-13 14:48:00',NULL),
+    -> (25,25,25,25,25,'queja','Queja sobre pedido/juego #25','Descripci¢n detallada del queja n£mero 25 registrado por el usuario.','RAD-20240025','en_proceso','En proceso de revisi¢n por el  rea correspondiente.','2024-01-17 15:05:00',NULL),
+    -> (26,26,26,26,26,'reclamo','Reclamo sobre pedido/juego #26','Descripci¢n detallada del reclamo n£mero 26 registrado por el usuario.','RAD-20240026','cerrado','Caso 26 resuelto satisfactoriamente.','2024-02-21 16:22:00','2024-02-24 17:14:00'),
+    -> (27,27,NULL,27,NULL,'sugerencia','Sugerencia sobre pedido/juego #27','Descripci¢n detallada del sugerencia n£mero 27 registrado por el usuario.','RAD-20240027','abierto',NULL,'2024-03-25 08:39:00',NULL),
+    -> (28,28,28,NULL,28,'peticion','Peticion sobre pedido/juego #28','Descripci¢n detallada del peticion n£mero 28 registrado por el usuario.','RAD-20240028','en_proceso','En proceso de revisi¢n por el  rea correspondiente.','2024-04-01 09:56:00',NULL),
+    -> (29,29,29,29,29,'queja','Queja sobre pedido/juego #29','Descripci¢n detallada del queja n£mero 29 registrado por el usuario.','RAD-20240029','cerrado','Caso 29 resuelto satisfactoriamente.','2024-05-05 10:13:00','2024-05-08 11:11:00'),
+    -> (30,30,NULL,30,NULL,'reclamo','Reclamo sobre pedido/juego #30','Descripci¢n detallada del reclamo n£mero 30 registrado por el usuario.','RAD-20240030','abierto',NULL,'2024-06-09 11:30:00',NULL);
+Query OK, 30 rows affected (0.117 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 11. DETALLE_PEDIDO
+MariaDB [elite_games]> INSERT INTO detalle_pedido (idDetalle, idPedido, idJuego, cantidad, precio_unitario) VALUES
+    -> (1,1,2,2,59.83),(2,2,5,3,41.15),(3,3,8,1,58.83),(4,4,11,2,54.42),(5,5,14,3,20.45),
+    -> (6,6,17,1,48.82),(7,7,20,2,47.26),(8,8,23,3,41.47),(9,9,26,1,30.66),(10,10,29,2,45.63),
+    -> (11,11,2,3,24.45),(12,12,5,1,37.38),(13,13,8,2,38.14),(14,14,11,3,58.14),(15,15,14,1,55.02),
+    -> (16,16,17,2,30.53),(17,17,20,3,40.01),(18,18,23,1,27.14),(19,19,26,2,56.50),(20,20,29,3,54.81),
+    -> (21,21,2,1,31.93),(22,22,5,2,45.55),(23,23,8,3,44.35),(24,24,11,1,26.10),(25,25,14,2,50.49),
+    -> (26,26,17,3,41.57),(27,27,20,1,51.14),(28,28,23,2,41.20),(29,29,26,3,20.01),(30,30,29,1,32.96);
+Query OK, 30 rows affected (0.040 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 12. INVENTARIO
+MariaDB [elite_games]> INSERT INTO inventario (idInventario, idJuego, stock_disponible, fecha_actualizacion) VALUES
+    -> (1,1,12,'2024-01-07 08:23:00'),(2,2,19,'2024-02-13 09:46:00'),(3,3,26,'2024-03-19 10:09:00'),(4,4,33,'2024-04-25 11:32:00'),(5,5,40,'2024-05-03 12:55:00'),
+    -> (6,6,47,'2024-06-09 13:18:00'),(7,7,54,'2024-07-15 14:41:00'),(8,8,61,'2024-08-21 15:04:00'),(9,9,68,'2024-09-27 16:27:00'),(10,10,75,'2024-10-05 07:50:00'),
+    -> (11,11,82,'2024-11-11 08:13:00'),(12,12,89,'2024-12-17 09:36:00'),(13,13,96,'2024-01-23 10:59:00'),(14,14,103,'2024-02-01 11:22:00'),(15,15,110,'2024-03-07 12:45:00'),
+    -> (16,16,117,'2024-04-13 13:08:00'),(17,17,124,'2024-05-19 14:31:00'),(18,18,131,'2024-06-25 15:54:00'),(19,19,138,'2024-07-03 16:17:00'),(20,20,145,'2024-08-09 07:40:00'),
+    -> (21,21,152,'2024-09-15 08:03:00'),(22,22,159,'2024-10-21 09:26:00'),(23,23,166,'2024-11-27 10:49:00'),(24,24,173,'2024-12-05 11:12:00'),(25,25,180,'2024-01-11 12:35:00'),
+    -> (26,26,187,'2024-02-17 13:58:00'),(27,27,194,'2024-03-23 14:21:00'),(28,28,201,'2024-04-01 15:44:00'),(29,29,8,'2024-05-07 16:07:00'),(30,30,15,'2024-06-13 07:30:00');
+Query OK, 30 rows affected (0.054 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 13. PAGOS
+MariaDB [elite_games]> INSERT INTO pagos (idPago, idPedido, metodo_pago, monto, estado_pago, referencia, fecha_pago) VALUES
+    -> (1,1,'tarjeta_debito',119.66,'aprobado','REF-100037','2024-01-04 12:29:00'),(2,2,'pse',123.45,'rechazado','REF-100074','2024-02-06 13:58:00'),
+    -> (3,3,'nequi',58.83,'pendiente','REF-100111','2024-03-08 14:27:00'),(4,4,'daviplata',108.84,'rechazado','REF-100148','2024-04-10 15:56:00'),
+    -> (5,5,'tarjeta_credito',61.35,'rechazado','REF-100185','2024-05-12 16:25:00'),(6,6,'tarjeta_debito',48.82,'pendiente','REF-100222','2024-06-14 17:54:00'),
+    -> (7,7,'pse',94.52,'aprobado','REF-100259','2024-07-16 18:23:00'),(8,8,'nequi',124.41,'rechazado','REF-100296','2024-08-18 11:52:00'),
+    -> (9,9,'daviplata',30.66,'rechazado','REF-100333','2024-09-20 12:21:00'),(10,10,'tarjeta_credito',91.26,'aprobado','REF-100370','2024-10-22 13:50:00'),
+    -> (11,11,'tarjeta_debito',73.35,'rechazado','REF-100407','2024-11-24 14:19:00'),(12,12,'pse',37.38,'pendiente','REF-100444','2024-12-26 15:48:00'),
+    -> (13,13,'nequi',76.28,'aprobado','REF-100481','2024-01-28 16:17:00'),(14,14,'daviplata',174.42,'rechazado','REF-100518','2024-02-02 17:46:00'),
+    -> (15,15,'tarjeta_credito',55.02,'pendiente','REF-100555','2024-03-04 18:15:00'),(16,16,'tarjeta_debito',61.06,'aprobado','REF-100592','2024-04-06 11:44:00'),
+    -> (17,17,'pse',120.03,'rechazado','REF-100629','2024-05-08 12:13:00'),(18,18,'nequi',27.14,'pendiente','REF-100666','2024-06-10 13:42:00'),
+    -> (19,19,'daviplata',113.00,'rechazado','REF-100703','2024-07-12 14:11:00'),(20,20,'tarjeta_credito',164.43,'rechazado','REF-100740','2024-08-14 15:40:00'),
+    -> (21,21,'tarjeta_debito',31.93,'pendiente','REF-100777','2024-09-16 16:09:00'),(22,22,'pse',91.10,'aprobado','REF-100814','2024-10-18 17:38:00'),
+    -> (23,23,'nequi',133.05,'rechazado','REF-100851','2024-11-20 18:07:00'),(24,24,'daviplata',26.10,'rechazado','REF-100888','2024-12-22 11:36:00'),
+    -> (25,25,'tarjeta_credito',100.98,'aprobado','REF-100925','2024-01-24 12:05:00'),(26,26,'tarjeta_debito',124.71,'rechazado','REF-100962','2024-02-26 13:34:00'),
+    -> (27,27,'pse',51.14,'pendiente','REF-100999','2024-03-28 14:03:00'),(28,28,'nequi',82.40,'aprobado','REF-101036','2024-04-02 15:32:00'),
+    -> (29,29,'daviplata',60.03,'rechazado','REF-101073','2024-05-04 16:01:00'),(30,30,'tarjeta_credito',32.96,'pendiente','REF-101110','2024-06-06 17:30:00');
+Query OK, 30 rows affected (0.397 sec)
+Records: 30  Duplicates: 0  Warnings: 0
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 14. RESENAS
+MariaDB [elite_games]> INSERT INTO resenas (idResena, idUsuario, idJuego, calificacion, comentario, fecha_resena) VALUES
+    -> (1,2,3,2,'Buena jugabilidad pero le faltan mejoras.','2024-01-10 13:31:00'),(2,4,8,3,'No cumpli¢ mis expectativas.','2024-02-19 14:02:00'),
+    -> (3,6,13,4,'Gr ficos incre¡bles y buena historia.','2024-03-28 15:33:00'),(4,8,18,5,'Vale la pena el precio.','2024-04-09 16:04:00'),
+    -> (5,10,23,1,'Tiene bugs pero es divertido.','2024-05-18 17:35:00'),(6,12,28,2,'Una de las mejores experiencias del a¤o.','2024-06-27 12:06:00'),
+    -> (7,14,3,3,'Regular, esperaba m s contenido.','2024-07-08 13:37:00'),(8,16,8,4,'Muy adictivo, lo recomiendo totalmente.','2024-08-17 14:08:00'),
+    -> (9,18,13,5,'El multijugador podr¡a mejorar.','2024-09-26 15:39:00'),(10,20,18,1,'Excelente juego, muy recomendado.','2024-10-07 16:10:00'),
+    -> (11,22,23,2,'Buena jugabilidad pero le faltan mejoras.','2024-11-16 17:41:00'),(12,24,28,3,'No cumpli¢ mis expectativas.','2024-12-25 12:12:00'),
+    -> (13,26,3,4,'Gr ficos incre¡bles y buena historia.','2024-01-06 13:43:00'),(14,28,8,5,'Vale la pena el precio.','2024-02-15 14:14:00'),
+    -> (15,30,13,1,'Tiene bugs pero es divertido.','2024-03-24 15:45:00'),(16,2,18,2,'Una de las mejores experiencias del a¤o.','2024-04-05 16:16:00'),
+    -> (17,4,23,3,'Regular, esperaba m s contenido.','2024-05-14 17:47:00'),(18,6,28,4,'Muy adictivo, lo recomiendo totalmente.','2024-06-23 12:18:00'),
+    -> (19,8,3,5,'El multijugador podr¡a mejorar.','2024-07-04 13:49:00'),(20,10,8,1,'Excelente juego, muy recomendado.','2024-08-13 14:20:00'),
+    -> (21,12,13,2,'Buena jugabilidad pero le faltan mejoras.','2024-09-22 15:51:00'),(22,14,18,3,'No cumpli¢ mis expectativas.','2024-10-03 16:22:00'),
+    -> (23,16,23,4,'Gr ficos incre¡bles y buena historia.','2024-11-12 17:53:00'),(24,18,28,5,'Vale la pena el precio.','2024-12-21 12:24:00'),
+    -> (25,20,3,1,'Tiene bugs pero es divertido.','2024-01-02 13:55:00'),(26,22,8,2,'Una de las mejores experiencias del a¤o.','2024-02-11 14:26:00'),
+    -> (27,24,13,3,'Regular, esperaba m s contenido.','2024-03-20 15:57:00'),(28,26,18,4,'Muy adictivo, lo recomiendo totalmente.','2024-04-01 16:28:00'),
+    -> (29,28,23,5,'El multijugador podr¡a mejorar.','2024-05-10 17:59:00'),(30,30,28,1,'Excelente juego, muy recomendado.','2024-06-19 12:30:00');
+Query OK, 30 rows affected (0.116 sec)
+Records: 30  Duplicates: 0  Warnings: 0
