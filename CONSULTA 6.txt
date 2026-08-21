@@ -1,0 +1,51 @@
+::Requisito funcional: El sistema debe mostrar información legible de los juegos administrados, incluyendo datos del administrador y un resumen de la descripción del juego.
+Enunciado: Mostrar el administrador en mayúsculas, el juego en minúsculas, la longitud de la descripción, un resumen de la descripción y la categoría.
+
+
+MariaDB [elite_games]> SELECT UPPER(CONCAT(a.nombre, ' ', a.apellido)) AS administrador,
+    ->        LOWER(j.nombre) AS juego,
+    ->        LENGTH(j.descripcion) AS longitud_descripcion,
+    ->        SUBSTRING(j.descripcion, 1, 20) AS resumen_descripcion,
+    ->        c.nombre AS categoria
+    -> FROM administradores a
+    -> INNER JOIN admin_juego aj ON a.idAdmin = aj.idAdmin
+    -> INNER JOIN juegos j ON aj.idJuego = j.idJuego
+    -> INNER JOIN categorias c ON j.idCategoria = c.idCategoria
+    -> ORDER BY administrador;
++------------------+------------------------+----------------------+----------------------+--------------------------------+
+| administrador    | juego                  | longitud_descripcion | resumen_descripcion  | categoria                      |
++------------------+------------------------+----------------------+----------------------+--------------------------------+
+| ADRIÁN BETANCUR  | espíritu de acero      |                   73 | Videojuego de deport | Deportes Extremos              |
+| ALICIA PINEDA    | fortaleza eterna       |                   63 | Videojuego de sandbo | Sandbox                        |
+| ÁLVARO QUINTERO  | caminos perdidos       |                   60 | Videojuego de moba d | MOBA                           |
+| BEATRIZ OSPINA   | colonia zero           |                   62 | Videojuego de casual | Casual                         |
+| CARLOS VEGA      | estación fantasma      |                   62 | Videojuego de puzzle | Puzzle                         |
+| CLAUDIA BERMÚDEZ | nación salvaje         |                   62 | Videojuego de sigilo | Sigilo                         |
+| CRISTINA CUERVO  | crónicas de eldoria    |                   67 | Videojuego de simula | Simulación                     |
+| ELENA SERRANO    | última frontera        |                   70 | Videojuego de hack a | Hack and Slash                 |
+| EMILIO CONTRERAS | rutas del vacío        |                   61 | Videojuego de lucha  | Lucha                          |
+| ENRIQUE NIETO    | marea oscura           |                   69 | Videojuego de novela | Novela Visual                  |
+| FERNANDO DUARTE  | vestigios del norte    |                   65 | Videojuego de roguel | Roguelike                      |
+| GUSTAVO BARRETO  | constelación perdida   |                   65 | Videojuego de fantas | Fantasía                       |
+| HÉCTOR MEZA      | reino perdido          |                   66 | Videojuego de estrat | Estrategia                     |
+| IVÁN FRANCO      | furia mecánica         |                   64 | Videojuego de carrer | Carreras                       |
+| JORGE CIFUENTES  | sombras del imperio    |                   64 | Videojuego de aventu | Aventura                       |
+| LAURA PEÑA       | dragón de acero        |                   63 | Videojuego de acción | Acción                         |
+| LUCÍA CABRERA    | imperio de cenizas     |                   67 | Videojuego de plataf | Plataformas                    |
+| MARCELA CORTÉS   | titanes de neón        |                   69 | Videojuego de battle | Battle Royale                  |
+| MARTA BAUTISTA   | legado de hierro       |                   62 | Videojuego de terror | Terror                         |
+| MARTÍN GIL       | reino de cristal       |                   64 | Videojuego de surviv | Survival                       |
+| ÓSCAR ESCOBAR    | rebelión estelar       |                   65 | Videojuego de educat | Educativo                      |
+| PABLO URIBE      | tormenta carmesí       |                   63 | Videojuego de shoote | Shooter                        |
+| PATRICIA SILVA   | laberinto infinito     |                   72 | Videojuego de cienci | Ciencia Ficción                |
+| RAÚL DELGADO     | susurros del bosque    |                   71 | Videojuego de musica | Musical y Ritmo                |
+| RODRIGO LOZANO   | eco del silencio       |                   69 | Videojuego de mundo  | Mundo Abierto                  |
+| ROSA PELÁEZ      | alba de sangre         |                   66 | Videojuego de party  | Party Game                     |
+| SANDRA ZAPATA    | horizonte roto         |                   86 | Videojuego de cartas | Cartas y Estrategia por Turnos |
+| SILVIA VILLALBA  | guardianes del abismo  |                   64 | Videojuego de deport | Deportes                       |
+| TERESA ARANGO    | cazadores de sombra    |                   68 | Videojuego de metroi | Metroidvania                   |
+| VERÓNICA CAMACHO | velocidad extrema 2099 |                   59 | Videojuego de rpg de | RPG                            |
++------------------+------------------------+----------------------+----------------------+--------------------------------+
+30 rows in set (0.106 sec)
+
+MariaDB [elite_games]>

@@ -1,0 +1,51 @@
+::Requisito funcional: El sistema debe calcular el total pagado y la cantidad de pagos por usuario, incluso si aún no han pagado nada.
+Enunciado: Mostrar el usuario, la cantidad de pagos, el total pagado, el promedio de pago y la cantidad de artículos comprados.
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        COUNT(DISTINCT pg.idPago) AS cantidad_pagos,
+    ->        SUM(pg.monto) AS total_pagado,
+    ->        AVG(pg.monto) AS promedio_pago,
+    ->        COUNT(dp.idDetalle) AS items_comprados
+    -> FROM usuarios u
+    -> LEFT JOIN pedidos p ON u.idUsuario = p.idUsuario
+    -> LEFT JOIN pagos pg ON p.idPedido = pg.idPedido
+    -> LEFT JOIN detalle_pedido dp ON p.idPedido = dp.idPedido
+    -> GROUP BY u.idUsuario, u.nombre, u.apellido
+    -> ORDER BY total_pagado DESC;
++--------------------+----------------+--------------+---------------+-----------------+
+| usuario            | cantidad_pagos | total_pagado | promedio_pago | items_comprados |
++--------------------+----------------+--------------+---------------+-----------------+
+| Paula Morales      |              1 |       174.42 |    174.420000 |               1 |
+| Isabella Mendoza   |              1 |       164.43 |    164.430000 |               1 |
+| Tomás Guerrero     |              1 |       133.05 |    133.050000 |               1 |
+| Manuela Salazar    |              1 |       124.71 |    124.710000 |               1 |
+| Laura Torres       |              1 |       124.41 |    124.410000 |               1 |
+| Camila Rodríguez   |              1 |       123.45 |    123.450000 |               1 |
+| Julián Reyes       |              1 |       120.03 |    120.030000 |               1 |
+| Juan Gómez         |              1 |       119.66 |    119.660000 |               1 |
+| David Ruiz         |              1 |       113.00 |    113.000000 |               1 |
+| Valentina Martínez |              1 |       108.84 |    108.840000 |               1 |
+| Esteban Aguilar    |              1 |       100.98 |    100.980000 |               1 |
+| Felipe Hernández   |              1 |        94.52 |     94.520000 |               1 |
+| Sofía Díaz         |              1 |        91.26 |     91.260000 |               1 |
+| Gabriela Herrera   |              1 |        91.10 |     91.100000 |               1 |
+| Camilo Cárdenas    |              1 |        82.40 |     82.400000 |               1 |
+| Sebastián Rojas    |              1 |        76.28 |     76.280000 |               1 |
+| Nicolás Castro     |              1 |        73.35 |     73.350000 |               1 |
+| Santiago López     |              1 |        61.35 |     61.350000 |               1 |
+| Natalia Vargas     |              1 |        61.06 |     61.060000 |               1 |
+| Andrea Pardo       |              1 |        60.03 |     60.030000 |               1 |
+| Andrés Pérez       |              1 |        58.83 |     58.830000 |               1 |
+| Alejandro Suárez   |              1 |        55.02 |     55.020000 |               1 |
+| Ricardo Restrepo   |              1 |        51.14 |     51.140000 |               1 |
+| Mariana García     |              1 |        48.82 |     48.820000 |               1 |
+| Daniela Ortiz      |              1 |        37.38 |     37.380000 |               1 |
+| Juliana Navarro    |              1 |        32.96 |     32.960000 |               1 |
+| Miguel Cruz        |              1 |        31.93 |     31.930000 |               1 |
+| Diego Ramírez      |              1 |        30.66 |     30.660000 |               1 |
+| Carolina Jiménez   |              1 |        27.14 |     27.140000 |               1 |
+| Valeria Molina     |              1 |        26.10 |     26.100000 |               1 |
++--------------------+----------------+--------------+---------------+-----------------+
+30 rows in set (0.153 sec)
+
+MariaDB [elite_games]>

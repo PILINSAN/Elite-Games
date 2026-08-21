@@ -1,0 +1,52 @@
+::Requisito funcional: El sistema debe permitir consultar todos los PQRS registrados, incluyendo el juego, el pedido y el administrador relacionados, aunque no existan.
+Enunciado: Mostrar el usuario, el tipo de PQRS, el juego relacionado, el pedido relacionado, el administrador que atendió y el estado.
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        pq.tipo,
+    ->        j.nombre AS juego_relacionado,
+    ->        pq.idPedido AS pedido_relacionado,
+    ->        CONCAT(a.nombre, ' ', a.apellido) AS administrador,
+    ->        pq.estado
+    -> FROM pqrs pq
+    -> INNER JOIN usuarios u ON pq.idUsuario = u.idUsuario
+    -> LEFT JOIN juegos j ON pq.idJuego = j.idJuego
+    -> LEFT JOIN administradores a ON pq.idAdmin = a.idAdmin
+    -> LEFT JOIN pedidos p ON pq.idPedido = p.idPedido
+    -> ORDER BY pq.fechaRegistro DESC;
++--------------------+------------+-----------------------+--------------------+------------------+------------+
+| usuario            | tipo       | juego_relacionado     | pedido_relacionado | administrador    | estado     |
++--------------------+------------+-----------------------+--------------------+------------------+------------+
+| Daniela Ortiz      | peticion   | NULL                  |               NULL | NULL             | abierto    |
+| Valeria Molina     | peticion   | NULL                  |               NULL | NULL             | abierto    |
+| Nicolás Castro     | sugerencia | Imperio de Cenizas    |                 11 | Lucía Cabrera    | cerrado    |
+| Tomás Guerrero     | sugerencia | Cazadores de Sombra   |                 23 | Silvia Villalba  | cerrado    |
+| Sofía Díaz         | reclamo    | Tormenta Carmesí      |                 10 | Héctor Meza      | en_proceso |
+| Gabriela Herrera   | reclamo    | Vestigios del Norte   |                 22 | Adrián Betancur  | en_proceso |
+| Diego Ramírez      | queja      | NULL                  |                  9 | NULL             | abierto    |
+| Miguel Cruz        | queja      | NULL                  |                 21 | NULL             | abierto    |
+| Isabella Mendoza   | peticion   | Rebelión Estelar      |               NULL | Rodrigo Lozano   | cerrado    |
+| Laura Torres       | peticion   | Estación Fantasma     |               NULL | Óscar Escobar    | cerrado    |
+| David Ruiz         | sugerencia | Alba de Sangre        |                 19 | Cristina Cuervo  | en_proceso |
+| Felipe Hernández   | sugerencia | Crónicas de Eldoria   |                  7 | Claudia Bermúdez | en_proceso |
+| Mariana García     | reclamo    | NULL                  |                  6 | NULL             | abierto    |
+| Carolina Jiménez   | reclamo    | NULL                  |                 18 | NULL             | abierto    |
+| Juliana Navarro    | reclamo    | NULL                  |                 30 | NULL             | abierto    |
+| Santiago López     | queja      | Guardianes del Abismo |                  5 | Patricia Silva   | cerrado    |
+| Julián Reyes       | queja      | Fortaleza Eterna      |                 17 | Teresa Arango    | cerrado    |
+| Andrea Pardo       | queja      | Laberinto Infinito    |                 29 | Alicia Pineda    | cerrado    |
+| Valentina Martínez | peticion   | Reino Perdido         |               NULL | Fernando Duarte  | en_proceso |
+| Natalia Vargas     | peticion   | Caminos Perdidos      |               NULL | Álvaro Quintero  | en_proceso |
+| Camilo Cárdenas    | peticion   | Espíritu de Acero     |               NULL | Pablo Uribe      | en_proceso |
+| Ricardo Restrepo   | sugerencia | NULL                  |                 27 | NULL             | abierto    |
+| Andrés Pérez       | sugerencia | NULL                  |                  3 | NULL             | abierto    |
+| Alejandro Suárez   | sugerencia | NULL                  |                 15 | NULL             | abierto    |
+| Manuela Salazar    | reclamo    | Marea Oscura          |                 26 | Enrique Nieto    | cerrado    |
+| Camila Rodríguez   | reclamo    | Sombras del Imperio   |                  2 | Carlos Vega      | cerrado    |
+| Paula Morales      | reclamo    | Eco del Silencio      |                 14 | Jorge Cifuentes  | cerrado    |
+| Sebastián Rojas    | queja      | Nación Salvaje        |                 13 | Elena Serrano    | en_proceso |
+| Esteban Aguilar    | queja      | Última Frontera       |                 25 | Rosa Peláez      | en_proceso |
+| Juan Gómez         | queja      | Dragón de Acero       |                  1 | Laura Peña       | en_proceso |
++--------------------+------------+-----------------------+--------------------+------------------+------------+
+30 rows in set (0.002 sec)
+
+MariaDB [elite_games]>

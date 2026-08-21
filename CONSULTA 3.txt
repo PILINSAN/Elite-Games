@@ -1,0 +1,51 @@
+::Requisito funcional: El sistema debe mostrar todos los juegos disponibles con su plataforma y precio, incluso si el proveedor no tiene información completa.
+Enunciado: Mostrar el proveedor, el juego, la categoría, la plataforma y el precio.
+
+MariaDB [elite_games]> SELECT pr.razon_social AS proveedor,
+    ->        j.nombre AS juego,
+    ->        c.nombre AS categoria,
+    ->        pl.nombre AS plataforma,
+    ->        jp.precio
+    -> FROM proveedores pr
+    -> RIGHT JOIN juegos j ON pr.idProveedor = j.idProveedor
+    -> INNER JOIN categorias c ON j.idCategoria = c.idCategoria
+    -> INNER JOIN juego_plataforma jp ON j.idJuego = jp.idJuego
+    -> INNER JOIN plataformas pl ON jp.idPlataforma = pl.idPlataforma
+    -> ORDER BY j.nombre;
++---------------------------+------------------------+--------------------------------+----------------------+--------+
+| proveedor                 | juego                  | categoria                      | plataforma           | precio |
++---------------------------+------------------------+--------------------------------+----------------------+--------+
+| Aurora Byte Games         | Alba de Sangre         | Party Game                     | PlayStation VR2      |  33.95 |
+| Estudio Colibrí           | Caminos Perdidos       | MOBA                           | Amazon Luna          |  25.75 |
+| Estudio Caimán Digital    | Cazadores de Sombra    | Metroidvania                   | Xbox Series X        |  15.44 |
+| Estudio Páramo Games      | Colonia Zero           | Casual                         | PC - GOG             |  69.84 |
+| Fenix Sur Interactive     | Constelación Perdida   | Fantasía                       | Meta Quest 3         |  32.89 |
+| Dragón Rojo Games         | Crónicas de Eldoria    | Simulación                     | Nintendo Switch OLED |  62.57 |
+| Nébula Studios SAS        | Dragón de Acero        | Acción                         | PlayStation 5        |  23.73 |
+| Estudio Jaguar Negro      | Eco del Silencio       | Mundo Abierto                  | PlayStation 3        |  24.79 |
+| Rumbo Norte Studios       | Espíritu de Acero      | Deportes Extremos              | PlayStation Vita     |  35.32 |
+| Estudio Andes Interactivo | Estación Fantasma      | Puzzle                         | Mobile - iOS         |  28.87 |
+| Vortex Play Studios       | Fortaleza Eterna       | Sandbox                        | Nintendo 3DS         |  45.07 |
+| Estudio Guacamaya         | Furia Mecánica         | Carreras                       | Wii U                |  66.56 |
+| Quantum Play Studios      | Guardianes del Abismo  | Deportes                       | PC - Microsoft Store |  22.65 |
+| Estudio Anaconda Games    | Horizonte Roto         | Cartas y Estrategia por Turnos | Mobile - Android     |  57.51 |
+| Horizonte Digital Games   | Imperio de Cenizas     | Plataformas                    | Meta Quest 2         |  64.86 |
+| Estudio Quetzal Digital   | Laberinto Infinito     | Ciencia Ficción                | PC - Steam           |  13.80 |
+| Nova Sur Entertainment    | Legado de Hierro       | Terror                         | Nvidia Shield        |  49.32 |
+| Estelar Play Co.          | Marea Oscura           | Novela Visual                  | Nintendo Switch      |  47.64 |
+| Silverline Interactive    | Nación Salvaje         | Sigilo                         | PC - Ubisoft Connect |  25.88 |
+| Estudio Manglar           | Rebelión Estelar       | Educativo                      | Mac App Store        |  23.15 |
+| Solsticio Interactive     | Reino de Cristal       | Survival                       | PC - Battle.net      |  12.82 |
+| RetroWave Interactive     | Reino Perdido          | Estrategia                     | Xbox Series S        |  26.05 |
+| Estudio Tucán             | Rutas del Vacío        | Lucha                          | PlayStation 4        |  37.52 |
+| Pixel Forge Games         | Sombras del Imperio    | Aventura                       | PC - EA App          |  11.92 |
+| Estudio Puma Digital      | Susurros del Bosque    | Musical y Ritmo                | Nintendo Switch Lite |  63.86 |
+| Meridian Games Co.        | Titanes de Neón        | Battle Royale                  | Xbox One             |  43.67 |
+| Estudio Cascabel          | Tormenta Carmesí       | Shooter                        | PC - Epic Games      |  33.73 |
+| Estudio Orquídea          | Última Frontera        | Hack and Slash                 | Xbox 360             |  16.57 |
+| Estudio Cóndor Digital    | Velocidad Extrema 2099 | RPG                            | ROG Ally             |  28.92 |
+| Ironclad Sur Studios      | Vestigios del Norte    | Roguelike                      | Steam Deck           |  40.56 |
++---------------------------+------------------------+--------------------------------+----------------------+--------+
+30 rows in set (0.104 sec)
+
+MariaDB [elite_games]>

@@ -1,0 +1,459 @@
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS nombre_completo,
+    ->        p.idPedido,
+    ->        j.nombre AS juego,
+    ->        dp.cantidad,
+    ->        dp.precio_unitario
+    -> FROM usuarios u
+    -> INNER JOIN pedidos p ON u.idUsuario = p.idUsuario
+    -> INNER JOIN detalle_pedido dp ON p.idPedido = dp.idPedido
+    -> INNER JOIN juegos j ON dp.idJuego = j.idJuego
+    -> ORDER BY p.idPedido;
++--------------------+----------+-----------------------+----------+-----------------+
+| nombre_completo    | idPedido | juego                 | cantidad | precio_unitario |
++--------------------+----------+-----------------------+----------+-----------------+
+| Juan Gómez         |        1 | Sombras del Imperio   |        2 |           59.83 |
+| Camila Rodríguez   |        2 | Guardianes del Abismo |        3 |           41.15 |
+| Andrés Pérez       |        3 | Estación Fantasma     |        1 |           58.83 |
+| Valentina Martínez |        4 | Imperio de Cenizas    |        2 |           54.42 |
+| Santiago López     |        5 | Eco del Silencio      |        3 |           20.45 |
+| Mariana García     |        6 | Fortaleza Eterna      |        1 |           48.82 |
+| Felipe Hernández   |        7 | Rebelión Estelar      |        2 |           47.26 |
+| Laura Torres       |        8 | Cazadores de Sombra   |        3 |           41.47 |
+| Diego Ramírez      |        9 | Marea Oscura          |        1 |           30.66 |
+| Sofía Díaz         |       10 | Laberinto Infinito    |        2 |           45.63 |
+| Nicolás Castro     |       11 | Sombras del Imperio   |        3 |           24.45 |
+| Daniela Ortiz      |       12 | Guardianes del Abismo |        1 |           37.38 |
+| Sebastián Rojas    |       13 | Estación Fantasma     |        2 |           38.14 |
+| Paula Morales      |       14 | Imperio de Cenizas    |        3 |           58.14 |
+| Alejandro Suárez   |       15 | Eco del Silencio      |        1 |           55.02 |
+| Natalia Vargas     |       16 | Fortaleza Eterna      |        2 |           30.53 |
+| Julián Reyes       |       17 | Rebelión Estelar      |        3 |           40.01 |
+| Carolina Jiménez   |       18 | Cazadores de Sombra   |        1 |           27.14 |
+| David Ruiz         |       19 | Marea Oscura          |        2 |           56.50 |
+| Isabella Mendoza   |       20 | Laberinto Infinito    |        3 |           54.81 |
+| Miguel Cruz        |       21 | Sombras del Imperio   |        1 |           31.93 |
+| Gabriela Herrera   |       22 | Guardianes del Abismo |        2 |           45.55 |
+| Tomás Guerrero     |       23 | Estación Fantasma     |        3 |           44.35 |
+| Valeria Molina     |       24 | Imperio de Cenizas    |        1 |           26.10 |
+| Esteban Aguilar    |       25 | Eco del Silencio      |        2 |           50.49 |
+| Manuela Salazar    |       26 | Fortaleza Eterna      |        3 |           41.57 |
+| Ricardo Restrepo   |       27 | Rebelión Estelar      |        1 |           51.14 |
+| Camilo Cárdenas    |       28 | Cazadores de Sombra   |        2 |           41.20 |
+| Andrea Pardo       |       29 | Marea Oscura          |        3 |           20.01 |
+| Juliana Navarro    |       30 | Laberinto Infinito    |        1 |           32.96 |
++--------------------+----------+-----------------------+----------+-----------------+
+30 rows in set (0.132 sec)
+
+MariaDB [elite_games]> SELECT CONCAT(a.nombre, ' ', a.apellido) AS administrador,
+    ->        a.rol,
+    ->        COUNT(aj.idJuego) AS cantidad_juegos
+    -> FROM administradores a
+    -> LEFT JOIN admin_juego aj ON a.idAdmin = aj.idAdmin
+    -> LEFT JOIN juegos j ON aj.idJuego = j.idJuego
+    -> LEFT JOIN categorias c ON j.idCategoria = c.idCategoria
+    -> GROUP BY a.idAdmin, a.nombre, a.apellido, a.rol
+    -> ORDER BY cantidad_juegos DESC;
++------------------+------------+-----------------+
+| administrador    | rol        | cantidad_juegos |
++------------------+------------+-----------------+
+| Carlos Vega      | superadmin |               1 |
+| Marta Bautista   | soporte    |               1 |
+| Pablo Uribe      | catalogo   |               1 |
+| Sandra Zapata    | soporte    |               1 |
+| Adrián Betancur  | catalogo   |               1 |
+| Marcela Cortés   | soporte    |               1 |
+| Álvaro Quintero  | catalogo   |               1 |
+| Alicia Pineda    | superadmin |               1 |
+| Héctor Meza      | catalogo   |               1 |
+| Silvia Villalba  | superadmin |               1 |
+| Fernando Duarte  | catalogo   |               1 |
+| Teresa Arango    | superadmin |               1 |
+| Martín Gil       | soporte    |               1 |
+| Lucía Cabrera    | superadmin |               1 |
+| Emilio Contreras | soporte    |               1 |
+| Patricia Silva   | superadmin |               1 |
+| Gustavo Barreto  | soporte    |               1 |
+| Raúl Delgado     | soporte    |               1 |
+| Rosa Peláez      | catalogo   |               1 |
+| Iván Franco      | soporte    |               1 |
+| Cristina Cuervo  | catalogo   |               1 |
+| Elena Serrano    | catalogo   |               1 |
+| Enrique Nieto    | superadmin |               1 |
+| Claudia Bermúdez | catalogo   |               1 |
+| Rodrigo Lozano   | superadmin |               1 |
+| Laura Peña       | catalogo   |               1 |
+| Jorge Cifuentes  | superadmin |               1 |
+| Verónica Camacho | soporte    |               1 |
+| Óscar Escobar    | superadmin |               1 |
+| Beatriz Ospina   | soporte    |               1 |
++------------------+------------+-----------------+
+30 rows in set (0.040 sec)
+
+MariaDB [elite_games]> SELECT pr.razon_social AS proveedor,
+    ->        j.nombre AS juego,
+    ->        c.nombre AS categoria,
+    ->        pl.nombre AS plataforma,
+    ->        jp.precio
+    -> FROM proveedores pr
+    -> RIGHT JOIN juegos j ON pr.idProveedor = j.idProveedor
+    -> INNER JOIN categorias c ON j.idCategoria = c.idCategoria
+    -> INNER JOIN juego_plataforma jp ON j.idJuego = jp.idJuego
+    -> INNER JOIN plataformas pl ON jp.idPlataforma = pl.idPlataforma
+    -> ORDER BY j.nombre;
++---------------------------+------------------------+--------------------------------+----------------------+--------+
+| proveedor                 | juego                  | categoria                      | plataforma           | precio |
++---------------------------+------------------------+--------------------------------+----------------------+--------+
+| Aurora Byte Games         | Alba de Sangre         | Party Game                     | PlayStation VR2      |  33.95 |
+| Estudio Colibrí           | Caminos Perdidos       | MOBA                           | Amazon Luna          |  25.75 |
+| Estudio Caimán Digital    | Cazadores de Sombra    | Metroidvania                   | Xbox Series X        |  15.44 |
+| Estudio Páramo Games      | Colonia Zero           | Casual                         | PC - GOG             |  69.84 |
+| Fenix Sur Interactive     | Constelación Perdida   | Fantasía                       | Meta Quest 3         |  32.89 |
+| Dragón Rojo Games         | Crónicas de Eldoria    | Simulación                     | Nintendo Switch OLED |  62.57 |
+| Nébula Studios SAS        | Dragón de Acero        | Acción                         | PlayStation 5        |  23.73 |
+| Estudio Jaguar Negro      | Eco del Silencio       | Mundo Abierto                  | PlayStation 3        |  24.79 |
+| Rumbo Norte Studios       | Espíritu de Acero      | Deportes Extremos              | PlayStation Vita     |  35.32 |
+| Estudio Andes Interactivo | Estación Fantasma      | Puzzle                         | Mobile - iOS         |  28.87 |
+| Vortex Play Studios       | Fortaleza Eterna       | Sandbox                        | Nintendo 3DS         |  45.07 |
+| Estudio Guacamaya         | Furia Mecánica         | Carreras                       | Wii U                |  66.56 |
+| Quantum Play Studios      | Guardianes del Abismo  | Deportes                       | PC - Microsoft Store |  22.65 |
+| Estudio Anaconda Games    | Horizonte Roto         | Cartas y Estrategia por Turnos | Mobile - Android     |  57.51 |
+| Horizonte Digital Games   | Imperio de Cenizas     | Plataformas                    | Meta Quest 2         |  64.86 |
+| Estudio Quetzal Digital   | Laberinto Infinito     | Ciencia Ficción                | PC - Steam           |  13.80 |
+| Nova Sur Entertainment    | Legado de Hierro       | Terror                         | Nvidia Shield        |  49.32 |
+| Estelar Play Co.          | Marea Oscura           | Novela Visual                  | Nintendo Switch      |  47.64 |
+| Silverline Interactive    | Nación Salvaje         | Sigilo                         | PC - Ubisoft Connect |  25.88 |
+| Estudio Manglar           | Rebelión Estelar       | Educativo                      | Mac App Store        |  23.15 |
+| Solsticio Interactive     | Reino de Cristal       | Survival                       | PC - Battle.net      |  12.82 |
+| RetroWave Interactive     | Reino Perdido          | Estrategia                     | Xbox Series S        |  26.05 |
+| Estudio Tucán             | Rutas del Vacío        | Lucha                          | PlayStation 4        |  37.52 |
+| Pixel Forge Games         | Sombras del Imperio    | Aventura                       | PC - EA App          |  11.92 |
+| Estudio Puma Digital      | Susurros del Bosque    | Musical y Ritmo                | Nintendo Switch Lite |  63.86 |
+| Meridian Games Co.        | Titanes de Neón        | Battle Royale                  | Xbox One             |  43.67 |
+| Estudio Cascabel          | Tormenta Carmesí       | Shooter                        | PC - Epic Games      |  33.73 |
+| Estudio Orquídea          | Última Frontera        | Hack and Slash                 | Xbox 360             |  16.57 |
+| Estudio Cóndor Digital    | Velocidad Extrema 2099 | RPG                            | ROG Ally             |  28.92 |
+| Ironclad Sur Studios      | Vestigios del Norte    | Roguelike                      | Steam Deck           |  40.56 |
++---------------------------+------------------------+--------------------------------+----------------------+--------+
+30 rows in set (0.104 sec)
+
+MariaDB [elite_games]> Bye
+Ctrl-C -- exit!
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 42
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use  elite_games;
+Database changed
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        SUM(dp.cantidad * dp.precio_unitario) AS total_gastado,
+    ->        AVG(dp.cantidad * dp.precio_unitario) AS promedio_compra,
+    ->        MAX(dp.cantidad * dp.precio_unitario) AS compra_maxima,
+    ->        MIN(dp.cantidad * dp.precio_unitario) AS compra_minima
+    -> FROM usuarios u
+    -> INNER JOIN pedidos p ON u.idUsuario = p.idUsuario
+    -> INNER JOIN detalle_pedido dp ON p.idPedido = dp.idPedido
+    -> INNER JOIN juegos j ON dp.idJuego = j.idJuego
+    -> GROUP BY u.idUsuario, u.nombre, u.apellido
+    -> ORDER BY total_gastado DESC;
++--------------------+---------------+-----------------+---------------+---------------+
+| usuario            | total_gastado | promedio_compra | compra_maxima | compra_minima |
++--------------------+---------------+-----------------+---------------+---------------+
+| Paula Morales      |        174.42 |      174.420000 |        174.42 |        174.42 |
+| Isabella Mendoza   |        164.43 |      164.430000 |        164.43 |        164.43 |
+| Tomás Guerrero     |        133.05 |      133.050000 |        133.05 |        133.05 |
+| Manuela Salazar    |        124.71 |      124.710000 |        124.71 |        124.71 |
+| Laura Torres       |        124.41 |      124.410000 |        124.41 |        124.41 |
+| Camila Rodríguez   |        123.45 |      123.450000 |        123.45 |        123.45 |
+| Julián Reyes       |        120.03 |      120.030000 |        120.03 |        120.03 |
+| Juan Gómez         |        119.66 |      119.660000 |        119.66 |        119.66 |
+| David Ruiz         |        113.00 |      113.000000 |        113.00 |        113.00 |
+| Valentina Martínez |        108.84 |      108.840000 |        108.84 |        108.84 |
+| Esteban Aguilar    |        100.98 |      100.980000 |        100.98 |        100.98 |
+| Felipe Hernández   |         94.52 |       94.520000 |         94.52 |         94.52 |
+| Sofía Díaz         |         91.26 |       91.260000 |         91.26 |         91.26 |
+| Gabriela Herrera   |         91.10 |       91.100000 |         91.10 |         91.10 |
+| Camilo Cárdenas    |         82.40 |       82.400000 |         82.40 |         82.40 |
+| Sebastián Rojas    |         76.28 |       76.280000 |         76.28 |         76.28 |
+| Nicolás Castro     |         73.35 |       73.350000 |         73.35 |         73.35 |
+| Santiago López     |         61.35 |       61.350000 |         61.35 |         61.35 |
+| Natalia Vargas     |         61.06 |       61.060000 |         61.06 |         61.06 |
+| Andrea Pardo       |         60.03 |       60.030000 |         60.03 |         60.03 |
+| Andrés Pérez       |         58.83 |       58.830000 |         58.83 |         58.83 |
+| Alejandro Suárez   |         55.02 |       55.020000 |         55.02 |         55.02 |
+| Ricardo Restrepo   |         51.14 |       51.140000 |         51.14 |         51.14 |
+| Mariana García     |         48.82 |       48.820000 |         48.82 |         48.82 |
+| Daniela Ortiz      |         37.38 |       37.380000 |         37.38 |         37.38 |
+| Juliana Navarro    |         32.96 |       32.960000 |         32.96 |         32.96 |
+| Miguel Cruz        |         31.93 |       31.930000 |         31.93 |         31.93 |
+| Diego Ramírez      |         30.66 |       30.660000 |         30.66 |         30.66 |
+| Carolina Jiménez   |         27.14 |       27.140000 |         27.14 |         27.14 |
+| Valeria Molina     |         26.10 |       26.100000 |         26.10 |         26.10 |
++--------------------+---------------+-----------------+---------------+---------------+
+30 rows in set (0.146 sec)
+
+MariaDB [elite_games]> SELECT j.nombre AS juego,
+    ->        pl.nombre AS plataforma,
+    ->        c.nombre AS categoria,
+    ->        jp.precio AS precio_original,
+    ->        ROUND(jp.precio, 1) AS precio_redondeado,
+    ->        CEIL(jp.precio) AS precio_techo,
+    ->        FLOOR(jp.precio) AS precio_piso,
+    ->        ABS(jp.precio - 50) AS diferencia_absoluta_50,
+    ->        MOD(j.idJuego, c.idCategoria) AS resto_division
+    -> FROM juegos j
+    -> INNER JOIN categorias c ON j.idCategoria = c.idCategoria
+    -> INNER JOIN proveedores pr ON j.idProveedor = pr.idProveedor
+    -> INNER JOIN juego_plataforma jp ON j.idJuego = jp.idJuego
+    -> INNER JOIN plataformas pl ON jp.idPlataforma = pl.idPlataforma
+    -> ORDER BY j.nombre;
++------------------------+----------------------+--------------------------------+-----------------+-------------------+--------------+-------------+------------------------+----------------+
+| juego                  | plataforma           | categoria                      | precio_original | precio_redondeado | precio_techo | precio_piso | diferencia_absoluta_50 | resto_division |
++------------------------+----------------------+--------------------------------+-----------------+-------------------+--------------+-------------+------------------------+----------------+
+| Alba de Sangre         | PlayStation VR2      | Party Game                     |           33.95 |              34.0 |           34 |          33 |                  16.05 |              0 |
+| Caminos Perdidos       | Amazon Luna          | MOBA                           |           25.75 |              25.8 |           26 |          25 |                  24.25 |              0 |
+| Cazadores de Sombra    | Xbox Series X        | Metroidvania                   |           15.44 |              15.4 |           16 |          15 |                  34.56 |              0 |
+| Colonia Zero           | PC - GOG             | Casual                         |           69.84 |              69.8 |           70 |          69 |                  19.84 |              0 |
+| Constelación Perdida   | Meta Quest 3         | Fantasía                       |           32.89 |              32.9 |           33 |          32 |                  17.11 |              0 |
+| Crónicas de Eldoria    | Nintendo Switch OLED | Simulación                     |           62.57 |              62.6 |           63 |          62 |                  12.57 |              0 |
+| Dragón de Acero        | PlayStation 5        | Acción                         |           23.73 |              23.7 |           24 |          23 |                  26.27 |              0 |
+| Eco del Silencio       | PlayStation 3        | Mundo Abierto                  |           24.79 |              24.8 |           25 |          24 |                  25.21 |              0 |
+| Espíritu de Acero      | PlayStation Vita     | Deportes Extremos              |           35.32 |              35.3 |           36 |          35 |                  14.68 |              0 |
+| Estación Fantasma      | Mobile - iOS         | Puzzle                         |           28.87 |              28.9 |           29 |          28 |                  21.13 |              0 |
+| Fortaleza Eterna       | Nintendo 3DS         | Sandbox                        |           45.07 |              45.1 |           46 |          45 |                   4.93 |              0 |
+| Furia Mecánica         | Wii U                | Carreras                       |           66.56 |              66.6 |           67 |          66 |                  16.56 |              0 |
+| Guardianes del Abismo  | PC - Microsoft Store | Deportes                       |           22.65 |              22.7 |           23 |          22 |                  27.35 |              0 |
+| Horizonte Roto         | Mobile - Android     | Cartas y Estrategia por Turnos |           57.51 |              57.5 |           58 |          57 |                   7.51 |              0 |
+| Imperio de Cenizas     | Meta Quest 2         | Plataformas                    |           64.86 |              64.9 |           65 |          64 |                  14.86 |              0 |
+| Laberinto Infinito     | PC - Steam           | Ciencia Ficción                |           13.80 |              13.8 |           14 |          13 |                  36.20 |              0 |
+| Legado de Hierro       | Nvidia Shield        | Terror                         |           49.32 |              49.3 |           50 |          49 |                   0.68 |              0 |
+| Marea Oscura           | Nintendo Switch      | Novela Visual                  |           47.64 |              47.6 |           48 |          47 |                   2.36 |              0 |
+| Nación Salvaje         | PC - Ubisoft Connect | Sigilo                         |           25.88 |              25.9 |           26 |          25 |                  24.12 |              0 |
+| Rebelión Estelar       | Mac App Store        | Educativo                      |           23.15 |              23.2 |           24 |          23 |                  26.85 |              0 |
+| Reino de Cristal       | PC - Battle.net      | Survival                       |           12.82 |              12.8 |           13 |          12 |                  37.18 |              0 |
+| Reino Perdido          | Xbox Series S        | Estrategia                     |           26.05 |              26.1 |           27 |          26 |                  23.95 |              0 |
+| Rutas del Vacío        | PlayStation 4        | Lucha                          |           37.52 |              37.5 |           38 |          37 |                  12.48 |              0 |
+| Sombras del Imperio    | PC - EA App          | Aventura                       |           11.92 |              11.9 |           12 |          11 |                  38.08 |              0 |
+| Susurros del Bosque    | Nintendo Switch Lite | Musical y Ritmo                |           63.86 |              63.9 |           64 |          63 |                  13.86 |              0 |
+| Titanes de Neón        | Xbox One             | Battle Royale                  |           43.67 |              43.7 |           44 |          43 |                   6.33 |              0 |
+| Tormenta Carmesí       | PC - Epic Games      | Shooter                        |           33.73 |              33.7 |           34 |          33 |                  16.27 |              0 |
+| Última Frontera        | Xbox 360             | Hack and Slash                 |           16.57 |              16.6 |           17 |          16 |                  33.43 |              0 |
+| Velocidad Extrema 2099 | ROG Ally             | RPG                            |           28.92 |              28.9 |           29 |          28 |                  21.08 |              0 |
+| Vestigios del Norte    | Steam Deck           | Roguelike                      |           40.56 |              40.6 |           41 |          40 |                   9.44 |              0 |
++------------------------+----------------------+--------------------------------+-----------------+-------------------+--------------+-------------+------------------------+----------------+
+30 rows in set (0.165 sec)
+
+MariaDB [elite_games]> SELECT UPPER(CONCAT(a.nombre, ' ', a.apellido)) AS administrador,
+    ->        LOWER(j.nombre) AS juego,
+    ->        LENGTH(j.descripcion) AS longitud_descripcion,
+    ->        SUBSTRING(j.descripcion, 1, 20) AS resumen_descripcion,
+    ->        c.nombre AS categoria
+    -> FROM administradores a
+    -> INNER JOIN admin_juego aj ON a.idAdmin = aj.idAdmin
+    -> INNER JOIN juegos j ON aj.idJuego = j.idJuego
+    -> INNER JOIN categorias c ON j.idCategoria = c.idCategoria
+    -> ORDER BY administrador;
++------------------+------------------------+----------------------+----------------------+--------------------------------+
+| administrador    | juego                  | longitud_descripcion | resumen_descripcion  | categoria                      |
++------------------+------------------------+----------------------+----------------------+--------------------------------+
+| ADRIÁN BETANCUR  | espíritu de acero      |                   73 | Videojuego de deport | Deportes Extremos              |
+| ALICIA PINEDA    | fortaleza eterna       |                   63 | Videojuego de sandbo | Sandbox                        |
+| ÁLVARO QUINTERO  | caminos perdidos       |                   60 | Videojuego de moba d | MOBA                           |
+| BEATRIZ OSPINA   | colonia zero           |                   62 | Videojuego de casual | Casual                         |
+| CARLOS VEGA      | estación fantasma      |                   62 | Videojuego de puzzle | Puzzle                         |
+| CLAUDIA BERMÚDEZ | nación salvaje         |                   62 | Videojuego de sigilo | Sigilo                         |
+| CRISTINA CUERVO  | crónicas de eldoria    |                   67 | Videojuego de simula | Simulación                     |
+| ELENA SERRANO    | última frontera        |                   70 | Videojuego de hack a | Hack and Slash                 |
+| EMILIO CONTRERAS | rutas del vacío        |                   61 | Videojuego de lucha  | Lucha                          |
+| ENRIQUE NIETO    | marea oscura           |                   69 | Videojuego de novela | Novela Visual                  |
+| FERNANDO DUARTE  | vestigios del norte    |                   65 | Videojuego de roguel | Roguelike                      |
+| GUSTAVO BARRETO  | constelación perdida   |                   65 | Videojuego de fantas | Fantasía                       |
+| HÉCTOR MEZA      | reino perdido          |                   66 | Videojuego de estrat | Estrategia                     |
+| IVÁN FRANCO      | furia mecánica         |                   64 | Videojuego de carrer | Carreras                       |
+| JORGE CIFUENTES  | sombras del imperio    |                   64 | Videojuego de aventu | Aventura                       |
+| LAURA PEÑA       | dragón de acero        |                   63 | Videojuego de acción | Acción                         |
+| LUCÍA CABRERA    | imperio de cenizas     |                   67 | Videojuego de plataf | Plataformas                    |
+| MARCELA CORTÉS   | titanes de neón        |                   69 | Videojuego de battle | Battle Royale                  |
+| MARTA BAUTISTA   | legado de hierro       |                   62 | Videojuego de terror | Terror                         |
+| MARTÍN GIL       | reino de cristal       |                   64 | Videojuego de surviv | Survival                       |
+| ÓSCAR ESCOBAR    | rebelión estelar       |                   65 | Videojuego de educat | Educativo                      |
+| PABLO URIBE      | tormenta carmesí       |                   63 | Videojuego de shoote | Shooter                        |
+| PATRICIA SILVA   | laberinto infinito     |                   72 | Videojuego de cienci | Ciencia Ficción                |
+| RAÚL DELGADO     | susurros del bosque    |                   71 | Videojuego de musica | Musical y Ritmo                |
+| RODRIGO LOZANO   | eco del silencio       |                   69 | Videojuego de mundo  | Mundo Abierto                  |
+| ROSA PELÁEZ      | alba de sangre         |                   66 | Videojuego de party  | Party Game                     |
+| SANDRA ZAPATA    | horizonte roto         |                   86 | Videojuego de cartas | Cartas y Estrategia por Turnos |
+| SILVIA VILLALBA  | guardianes del abismo  |                   64 | Videojuego de deport | Deportes                       |
+| TERESA ARANGO    | cazadores de sombra    |                   68 | Videojuego de metroi | Metroidvania                   |
+| VERÓNICA CAMACHO | velocidad extrema 2099 |                   59 | Videojuego de rpg de | RPG                            |
++------------------+------------------------+----------------------+----------------------+--------------------------------+
+30 rows in set (0.106 sec)
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        p.idPedido,
+    ->        MONTH(p.fecha_pedido) AS mes_pedido,
+    ->        j.nombre AS juego,
+    ->        dp.cantidad
+    -> FROM usuarios u
+    -> INNER JOIN pedidos p ON u.idUsuario = p.idUsuario
+    -> INNER JOIN detalle_pedido dp ON p.idPedido = dp.idPedido
+    -> INNER JOIN juegos j ON dp.idJuego = j.idJuego
+    -> WHERE MONTH(p.fecha_pedido) = 4
+    -> ORDER BY p.fecha_pedido;
++--------------------+----------+------------+---------------------+----------+
+| usuario            | idPedido | mes_pedido | juego               | cantidad |
++--------------------+----------+------------+---------------------+----------+
+| Camilo Cárdenas    |       28 |          4 | Cazadores de Sombra |        2 |
+| Natalia Vargas     |       16 |          4 | Fortaleza Eterna    |        2 |
+| Valentina Martínez |        4 |          4 | Imperio de Cenizas  |        2 |
++--------------------+----------+------------+---------------------+----------+
+3 rows in set (0.147 sec)
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        j.nombre AS juego,
+    ->        c.nombre AS categoria,
+    ->        r.calificacion,
+    ->        DATE(r.fecha_resena) AS fecha_resena
+    -> FROM usuarios u
+    -> INNER JOIN resenas r ON u.idUsuario = r.idUsuario
+    -> INNER JOIN juegos j ON r.idJuego = j.idJuego
+    -> INNER JOIN categorias c ON j.idCategoria = c.idCategoria
+    -> ORDER BY fecha_resena DESC;
++--------------------+------------------------+-------------------+--------------+--------------+
+| usuario            | juego                  | categoria         | calificacion | fecha_resena |
++--------------------+------------------------+-------------------+--------------+--------------+
+| Valeria Molina     | Espíritu de Acero      | Deportes Extremos |            3 | 2024-12-25   |
+| Carolina Jiménez   | Espíritu de Acero      | Deportes Extremos |            5 | 2024-12-21   |
+| Gabriela Herrera   | Cazadores de Sombra    | Metroidvania      |            2 | 2024-11-16   |
+| Natalia Vargas     | Cazadores de Sombra    | Metroidvania      |            4 | 2024-11-12   |
+| Isabella Mendoza   | Susurros del Bosque    | Musical y Ritmo   |            1 | 2024-10-07   |
+| Paula Morales      | Susurros del Bosque    | Musical y Ritmo   |            3 | 2024-10-03   |
+| Carolina Jiménez   | Nación Salvaje         | Sigilo            |            5 | 2024-09-26   |
+| Daniela Ortiz      | Nación Salvaje         | Sigilo            |            2 | 2024-09-22   |
+| Natalia Vargas     | Estación Fantasma      | Puzzle            |            4 | 2024-08-17   |
+| Sofía Díaz         | Estación Fantasma      | Puzzle            |            1 | 2024-08-13   |
+| Paula Morales      | Velocidad Extrema 2099 | RPG               |            3 | 2024-07-08   |
+| Laura Torres       | Velocidad Extrema 2099 | RPG               |            5 | 2024-07-04   |
+| Daniela Ortiz      | Espíritu de Acero      | Deportes Extremos |            2 | 2024-06-27   |
+| Mariana García     | Espíritu de Acero      | Deportes Extremos |            4 | 2024-06-23   |
+| Juliana Navarro    | Espíritu de Acero      | Deportes Extremos |            1 | 2024-06-19   |
+| Sofía Díaz         | Cazadores de Sombra    | Metroidvania      |            1 | 2024-05-18   |
+| Valentina Martínez | Cazadores de Sombra    | Metroidvania      |            3 | 2024-05-14   |
+| Camilo Cárdenas    | Cazadores de Sombra    | Metroidvania      |            5 | 2024-05-10   |
+| Laura Torres       | Susurros del Bosque    | Musical y Ritmo   |            5 | 2024-04-09   |
+| Camila Rodríguez   | Susurros del Bosque    | Musical y Ritmo   |            2 | 2024-04-05   |
+| Manuela Salazar    | Susurros del Bosque    | Musical y Ritmo   |            4 | 2024-04-01   |
+| Mariana García     | Nación Salvaje         | Sigilo            |            4 | 2024-03-28   |
+| Juliana Navarro    | Nación Salvaje         | Sigilo            |            1 | 2024-03-24   |
+| Valeria Molina     | Nación Salvaje         | Sigilo            |            3 | 2024-03-20   |
+| Valentina Martínez | Estación Fantasma      | Puzzle            |            3 | 2024-02-19   |
+| Camilo Cárdenas    | Estación Fantasma      | Puzzle            |            5 | 2024-02-15   |
+| Gabriela Herrera   | Estación Fantasma      | Puzzle            |            2 | 2024-02-11   |
+| Camila Rodríguez   | Velocidad Extrema 2099 | RPG               |            2 | 2024-01-10   |
+| Manuela Salazar    | Velocidad Extrema 2099 | RPG               |            4 | 2024-01-06   |
+| Isabella Mendoza   | Velocidad Extrema 2099 | RPG               |            1 | 2024-01-02   |
++--------------------+------------------------+-------------------+--------------+--------------+
+30 rows in set (0.001 sec)
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        pq.tipo,
+    ->        j.nombre AS juego_relacionado,
+    ->        pq.idPedido AS pedido_relacionado,
+    ->        CONCAT(a.nombre, ' ', a.apellido) AS administrador,
+    ->        pq.estado
+    -> FROM pqrs pq
+    -> INNER JOIN usuarios u ON pq.idUsuario = u.idUsuario
+    -> LEFT JOIN juegos j ON pq.idJuego = j.idJuego
+    -> LEFT JOIN administradores a ON pq.idAdmin = a.idAdmin
+    -> LEFT JOIN pedidos p ON pq.idPedido = p.idPedido
+    -> ORDER BY pq.fechaRegistro DESC;
++--------------------+------------+-----------------------+--------------------+------------------+------------+
+| usuario            | tipo       | juego_relacionado     | pedido_relacionado | administrador    | estado     |
++--------------------+------------+-----------------------+--------------------+------------------+------------+
+| Daniela Ortiz      | peticion   | NULL                  |               NULL | NULL             | abierto    |
+| Valeria Molina     | peticion   | NULL                  |               NULL | NULL             | abierto    |
+| Nicolás Castro     | sugerencia | Imperio de Cenizas    |                 11 | Lucía Cabrera    | cerrado    |
+| Tomás Guerrero     | sugerencia | Cazadores de Sombra   |                 23 | Silvia Villalba  | cerrado    |
+| Sofía Díaz         | reclamo    | Tormenta Carmesí      |                 10 | Héctor Meza      | en_proceso |
+| Gabriela Herrera   | reclamo    | Vestigios del Norte   |                 22 | Adrián Betancur  | en_proceso |
+| Diego Ramírez      | queja      | NULL                  |                  9 | NULL             | abierto    |
+| Miguel Cruz        | queja      | NULL                  |                 21 | NULL             | abierto    |
+| Isabella Mendoza   | peticion   | Rebelión Estelar      |               NULL | Rodrigo Lozano   | cerrado    |
+| Laura Torres       | peticion   | Estación Fantasma     |               NULL | Óscar Escobar    | cerrado    |
+| David Ruiz         | sugerencia | Alba de Sangre        |                 19 | Cristina Cuervo  | en_proceso |
+| Felipe Hernández   | sugerencia | Crónicas de Eldoria   |                  7 | Claudia Bermúdez | en_proceso |
+| Mariana García     | reclamo    | NULL                  |                  6 | NULL             | abierto    |
+| Carolina Jiménez   | reclamo    | NULL                  |                 18 | NULL             | abierto    |
+| Juliana Navarro    | reclamo    | NULL                  |                 30 | NULL             | abierto    |
+| Santiago López     | queja      | Guardianes del Abismo |                  5 | Patricia Silva   | cerrado    |
+| Julián Reyes       | queja      | Fortaleza Eterna      |                 17 | Teresa Arango    | cerrado    |
+| Andrea Pardo       | queja      | Laberinto Infinito    |                 29 | Alicia Pineda    | cerrado    |
+| Valentina Martínez | peticion   | Reino Perdido         |               NULL | Fernando Duarte  | en_proceso |
+| Natalia Vargas     | peticion   | Caminos Perdidos      |               NULL | Álvaro Quintero  | en_proceso |
+| Camilo Cárdenas    | peticion   | Espíritu de Acero     |               NULL | Pablo Uribe      | en_proceso |
+| Ricardo Restrepo   | sugerencia | NULL                  |                 27 | NULL             | abierto    |
+| Andrés Pérez       | sugerencia | NULL                  |                  3 | NULL             | abierto    |
+| Alejandro Suárez   | sugerencia | NULL                  |                 15 | NULL             | abierto    |
+| Manuela Salazar    | reclamo    | Marea Oscura          |                 26 | Enrique Nieto    | cerrado    |
+| Camila Rodríguez   | reclamo    | Sombras del Imperio   |                  2 | Carlos Vega      | cerrado    |
+| Paula Morales      | reclamo    | Eco del Silencio      |                 14 | Jorge Cifuentes  | cerrado    |
+| Sebastián Rojas    | queja      | Nación Salvaje        |                 13 | Elena Serrano    | en_proceso |
+| Esteban Aguilar    | queja      | Última Frontera       |                 25 | Rosa Peláez      | en_proceso |
+| Juan Gómez         | queja      | Dragón de Acero       |                  1 | Laura Peña       | en_proceso |
++--------------------+------------+-----------------------+--------------------+------------------+------------+
+30 rows in set (0.002 sec)
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        COUNT(DISTINCT pg.idPago) AS cantidad_pagos,
+    ->        SUM(pg.monto) AS total_pagado,
+    ->        AVG(pg.monto) AS promedio_pago,
+    ->        COUNT(dp.idDetalle) AS items_comprados
+    -> FROM usuarios u
+    -> LEFT JOIN pedidos p ON u.idUsuario = p.idUsuario
+    -> LEFT JOIN pagos pg ON p.idPedido = pg.idPedido
+    -> LEFT JOIN detalle_pedido dp ON p.idPedido = dp.idPedido
+    -> GROUP BY u.idUsuario, u.nombre, u.apellido
+    -> ORDER BY total_pagado DESC;
++--------------------+----------------+--------------+---------------+-----------------+
+| usuario            | cantidad_pagos | total_pagado | promedio_pago | items_comprados |
++--------------------+----------------+--------------+---------------+-----------------+
+| Paula Morales      |              1 |       174.42 |    174.420000 |               1 |
+| Isabella Mendoza   |              1 |       164.43 |    164.430000 |               1 |
+| Tomás Guerrero     |              1 |       133.05 |    133.050000 |               1 |
+| Manuela Salazar    |              1 |       124.71 |    124.710000 |               1 |
+| Laura Torres       |              1 |       124.41 |    124.410000 |               1 |
+| Camila Rodríguez   |              1 |       123.45 |    123.450000 |               1 |
+| Julián Reyes       |              1 |       120.03 |    120.030000 |               1 |
+| Juan Gómez         |              1 |       119.66 |    119.660000 |               1 |
+| David Ruiz         |              1 |       113.00 |    113.000000 |               1 |
+| Valentina Martínez |              1 |       108.84 |    108.840000 |               1 |
+| Esteban Aguilar    |              1 |       100.98 |    100.980000 |               1 |
+| Felipe Hernández   |              1 |        94.52 |     94.520000 |               1 |
+| Sofía Díaz         |              1 |        91.26 |     91.260000 |               1 |
+| Gabriela Herrera   |              1 |        91.10 |     91.100000 |               1 |
+| Camilo Cárdenas    |              1 |        82.40 |     82.400000 |               1 |
+| Sebastián Rojas    |              1 |        76.28 |     76.280000 |               1 |
+| Nicolás Castro     |              1 |        73.35 |     73.350000 |               1 |
+| Santiago López     |              1 |        61.35 |     61.350000 |               1 |
+| Natalia Vargas     |              1 |        61.06 |     61.060000 |               1 |
+| Andrea Pardo       |              1 |        60.03 |     60.030000 |               1 |
+| Andrés Pérez       |              1 |        58.83 |     58.830000 |               1 |
+| Alejandro Suárez   |              1 |        55.02 |     55.020000 |               1 |
+| Ricardo Restrepo   |              1 |        51.14 |     51.140000 |               1 |
+| Mariana García     |              1 |        48.82 |     48.820000 |               1 |
+| Daniela Ortiz      |              1 |        37.38 |     37.380000 |               1 |
+| Juliana Navarro    |              1 |        32.96 |     32.960000 |               1 |
+| Miguel Cruz        |              1 |        31.93 |     31.930000 |               1 |
+| Diego Ramírez      |              1 |        30.66 |     30.660000 |               1 |
+| Carolina Jiménez   |              1 |        27.14 |     27.140000 |               1 |
+| Valeria Molina     |              1 |        26.10 |     26.100000 |               1 |
++--------------------+----------------+--------------+---------------+-----------------+
+30 rows in set (0.153 sec)
+
+MariaDB [elite_games]>

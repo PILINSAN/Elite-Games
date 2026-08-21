@@ -1,0 +1,52 @@
+::Requisito funcional: El sistema debe calcular cuánto ha gastado cada usuario en sus pedidos, junto con su compra promedio, máxima y mínima.
+Enunciado: Mostrar el nombre completo del usuario, el total gastado, el promedio, la compra máxima y la compra mínima.
+
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        SUM(dp.cantidad * dp.precio_unitario) AS total_gastado,
+    ->        AVG(dp.cantidad * dp.precio_unitario) AS promedio_compra,
+    ->        MAX(dp.cantidad * dp.precio_unitario) AS compra_maxima,
+    ->        MIN(dp.cantidad * dp.precio_unitario) AS compra_minima
+    -> FROM usuarios u
+    -> INNER JOIN pedidos p ON u.idUsuario = p.idUsuario
+    -> INNER JOIN detalle_pedido dp ON p.idPedido = dp.idPedido
+    -> INNER JOIN juegos j ON dp.idJuego = j.idJuego
+    -> GROUP BY u.idUsuario, u.nombre, u.apellido
+    -> ORDER BY total_gastado DESC;
++--------------------+---------------+-----------------+---------------+---------------+
+| usuario            | total_gastado | promedio_compra | compra_maxima | compra_minima |
++--------------------+---------------+-----------------+---------------+---------------+
+| Paula Morales      |        174.42 |      174.420000 |        174.42 |        174.42 |
+| Isabella Mendoza   |        164.43 |      164.430000 |        164.43 |        164.43 |
+| Tomás Guerrero     |        133.05 |      133.050000 |        133.05 |        133.05 |
+| Manuela Salazar    |        124.71 |      124.710000 |        124.71 |        124.71 |
+| Laura Torres       |        124.41 |      124.410000 |        124.41 |        124.41 |
+| Camila Rodríguez   |        123.45 |      123.450000 |        123.45 |        123.45 |
+| Julián Reyes       |        120.03 |      120.030000 |        120.03 |        120.03 |
+| Juan Gómez         |        119.66 |      119.660000 |        119.66 |        119.66 |
+| David Ruiz         |        113.00 |      113.000000 |        113.00 |        113.00 |
+| Valentina Martínez |        108.84 |      108.840000 |        108.84 |        108.84 |
+| Esteban Aguilar    |        100.98 |      100.980000 |        100.98 |        100.98 |
+| Felipe Hernández   |         94.52 |       94.520000 |         94.52 |         94.52 |
+| Sofía Díaz         |         91.26 |       91.260000 |         91.26 |         91.26 |
+| Gabriela Herrera   |         91.10 |       91.100000 |         91.10 |         91.10 |
+| Camilo Cárdenas    |         82.40 |       82.400000 |         82.40 |         82.40 |
+| Sebastián Rojas    |         76.28 |       76.280000 |         76.28 |         76.28 |
+| Nicolás Castro     |         73.35 |       73.350000 |         73.35 |         73.35 |
+| Santiago López     |         61.35 |       61.350000 |         61.35 |         61.35 |
+| Natalia Vargas     |         61.06 |       61.060000 |         61.06 |         61.06 |
+| Andrea Pardo       |         60.03 |       60.030000 |         60.03 |         60.03 |
+| Andrés Pérez       |         58.83 |       58.830000 |         58.83 |         58.83 |
+| Alejandro Suárez   |         55.02 |       55.020000 |         55.02 |         55.02 |
+| Ricardo Restrepo   |         51.14 |       51.140000 |         51.14 |         51.14 |
+| Mariana García     |         48.82 |       48.820000 |         48.82 |         48.82 |
+| Daniela Ortiz      |         37.38 |       37.380000 |         37.38 |         37.38 |
+| Juliana Navarro    |         32.96 |       32.960000 |         32.96 |         32.96 |
+| Miguel Cruz        |         31.93 |       31.930000 |         31.93 |         31.93 |
+| Diego Ramírez      |         30.66 |       30.660000 |         30.66 |         30.66 |
+| Carolina Jiménez   |         27.14 |       27.140000 |         27.14 |         27.14 |
+| Valeria Molina     |         26.10 |       26.100000 |         26.10 |         26.10 |
++--------------------+---------------+-----------------+---------------+---------------+
+30 rows in set (0.146 sec)
+
+MariaDB [elite_games]>

@@ -1,0 +1,24 @@
+::Requisito funcional: El sistema debe permitir consultar los pedidos realizados en un mes específico, junto con el usuario y los juegos comprados.
+Enunciado: Mostrar el usuario, el número de pedido, el mes del pedido, el juego y la cantidad, filtrando por el mes de abril.
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        p.idPedido,
+    ->        MONTH(p.fecha_pedido) AS mes_pedido,
+    ->        j.nombre AS juego,
+    ->        dp.cantidad
+    -> FROM usuarios u
+    -> INNER JOIN pedidos p ON u.idUsuario = p.idUsuario
+    -> INNER JOIN detalle_pedido dp ON p.idPedido = dp.idPedido
+    -> INNER JOIN juegos j ON dp.idJuego = j.idJuego
+    -> WHERE MONTH(p.fecha_pedido) = 4
+    -> ORDER BY p.fecha_pedido;
++--------------------+----------+------------+---------------------+----------+
+| usuario            | idPedido | mes_pedido | juego               | cantidad |
++--------------------+----------+------------+---------------------+----------+
+| Camilo Cárdenas    |       28 |          4 | Cazadores de Sombra |        2 |
+| Natalia Vargas     |       16 |          4 | Fortaleza Eterna    |        2 |
+| Valentina Martínez |        4 |          4 | Imperio de Cenizas  |        2 |
++--------------------+----------+------------+---------------------+----------+
+3 rows in set (0.147 sec)
+
+MariaDB [elite_games]>

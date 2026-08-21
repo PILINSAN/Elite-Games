@@ -1,0 +1,50 @@
+::Requisito funcional: El sistema debe mostrar cuántos juegos administra cada administrador, incluso si no administra ninguno.
+Enunciado: Mostrar el nombre completo del administrador, su rol y la cantidad de juegos que administra.
+
+
+MariaDB [elite_games]> SELECT CONCAT(a.nombre, ' ', a.apellido) AS administrador,
+    ->        a.rol,
+    ->        COUNT(aj.idJuego) AS cantidad_juegos
+    -> FROM administradores a
+    -> LEFT JOIN admin_juego aj ON a.idAdmin = aj.idAdmin
+    -> LEFT JOIN juegos j ON aj.idJuego = j.idJuego
+    -> LEFT JOIN categorias c ON j.idCategoria = c.idCategoria
+    -> GROUP BY a.idAdmin, a.nombre, a.apellido, a.rol
+    -> ORDER BY cantidad_juegos DESC;
++------------------+------------+-----------------+
+| administrador    | rol        | cantidad_juegos |
++------------------+------------+-----------------+
+| Carlos Vega      | superadmin |               1 |
+| Marta Bautista   | soporte    |               1 |
+| Pablo Uribe      | catalogo   |               1 |
+| Sandra Zapata    | soporte    |               1 |
+| Adrián Betancur  | catalogo   |               1 |
+| Marcela Cortés   | soporte    |               1 |
+| Álvaro Quintero  | catalogo   |               1 |
+| Alicia Pineda    | superadmin |               1 |
+| Héctor Meza      | catalogo   |               1 |
+| Silvia Villalba  | superadmin |               1 |
+| Fernando Duarte  | catalogo   |               1 |
+| Teresa Arango    | superadmin |               1 |
+| Martín Gil       | soporte    |               1 |
+| Lucía Cabrera    | superadmin |               1 |
+| Emilio Contreras | soporte    |               1 |
+| Patricia Silva   | superadmin |               1 |
+| Gustavo Barreto  | soporte    |               1 |
+| Raúl Delgado     | soporte    |               1 |
+| Rosa Peláez      | catalogo   |               1 |
+| Iván Franco      | soporte    |               1 |
+| Cristina Cuervo  | catalogo   |               1 |
+| Elena Serrano    | catalogo   |               1 |
+| Enrique Nieto    | superadmin |               1 |
+| Claudia Bermúdez | catalogo   |               1 |
+| Rodrigo Lozano   | superadmin |               1 |
+| Laura Peña       | catalogo   |               1 |
+| Jorge Cifuentes  | superadmin |               1 |
+| Verónica Camacho | soporte    |               1 |
+| Óscar Escobar    | superadmin |               1 |
+| Beatriz Ospina   | soporte    |               1 |
++------------------+------------+-----------------+
+30 rows in set (0.040 sec)
+
+MariaDB [elite_games]>

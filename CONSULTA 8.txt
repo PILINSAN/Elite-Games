@@ -1,0 +1,50 @@
+::Requisito funcional: El sistema debe permitir consultar las reseñas de los usuarios mostrando la fecha exacta sin la hora.
+Enunciado: Mostrar el usuario, el juego, la categoría, la calificación y la fecha de la reseña (sin hora).
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS usuario,
+    ->        j.nombre AS juego,
+    ->        c.nombre AS categoria,
+    ->        r.calificacion,
+    ->        DATE(r.fecha_resena) AS fecha_resena
+    -> FROM usuarios u
+    -> INNER JOIN resenas r ON u.idUsuario = r.idUsuario
+    -> INNER JOIN juegos j ON r.idJuego = j.idJuego
+    -> INNER JOIN categorias c ON j.idCategoria = c.idCategoria
+    -> ORDER BY fecha_resena DESC;
++--------------------+------------------------+-------------------+--------------+--------------+
+| usuario            | juego                  | categoria         | calificacion | fecha_resena |
++--------------------+------------------------+-------------------+--------------+--------------+
+| Valeria Molina     | Espíritu de Acero      | Deportes Extremos |            3 | 2024-12-25   |
+| Carolina Jiménez   | Espíritu de Acero      | Deportes Extremos |            5 | 2024-12-21   |
+| Gabriela Herrera   | Cazadores de Sombra    | Metroidvania      |            2 | 2024-11-16   |
+| Natalia Vargas     | Cazadores de Sombra    | Metroidvania      |            4 | 2024-11-12   |
+| Isabella Mendoza   | Susurros del Bosque    | Musical y Ritmo   |            1 | 2024-10-07   |
+| Paula Morales      | Susurros del Bosque    | Musical y Ritmo   |            3 | 2024-10-03   |
+| Carolina Jiménez   | Nación Salvaje         | Sigilo            |            5 | 2024-09-26   |
+| Daniela Ortiz      | Nación Salvaje         | Sigilo            |            2 | 2024-09-22   |
+| Natalia Vargas     | Estación Fantasma      | Puzzle            |            4 | 2024-08-17   |
+| Sofía Díaz         | Estación Fantasma      | Puzzle            |            1 | 2024-08-13   |
+| Paula Morales      | Velocidad Extrema 2099 | RPG               |            3 | 2024-07-08   |
+| Laura Torres       | Velocidad Extrema 2099 | RPG               |            5 | 2024-07-04   |
+| Daniela Ortiz      | Espíritu de Acero      | Deportes Extremos |            2 | 2024-06-27   |
+| Mariana García     | Espíritu de Acero      | Deportes Extremos |            4 | 2024-06-23   |
+| Juliana Navarro    | Espíritu de Acero      | Deportes Extremos |            1 | 2024-06-19   |
+| Sofía Díaz         | Cazadores de Sombra    | Metroidvania      |            1 | 2024-05-18   |
+| Valentina Martínez | Cazadores de Sombra    | Metroidvania      |            3 | 2024-05-14   |
+| Camilo Cárdenas    | Cazadores de Sombra    | Metroidvania      |            5 | 2024-05-10   |
+| Laura Torres       | Susurros del Bosque    | Musical y Ritmo   |            5 | 2024-04-09   |
+| Camila Rodríguez   | Susurros del Bosque    | Musical y Ritmo   |            2 | 2024-04-05   |
+| Manuela Salazar    | Susurros del Bosque    | Musical y Ritmo   |            4 | 2024-04-01   |
+| Mariana García     | Nación Salvaje         | Sigilo            |            4 | 2024-03-28   |
+| Juliana Navarro    | Nación Salvaje         | Sigilo            |            1 | 2024-03-24   |
+| Valeria Molina     | Nación Salvaje         | Sigilo            |            3 | 2024-03-20   |
+| Valentina Martínez | Estación Fantasma      | Puzzle            |            3 | 2024-02-19   |
+| Camilo Cárdenas    | Estación Fantasma      | Puzzle            |            5 | 2024-02-15   |
+| Gabriela Herrera   | Estación Fantasma      | Puzzle            |            2 | 2024-02-11   |
+| Camila Rodríguez   | Velocidad Extrema 2099 | RPG               |            2 | 2024-01-10   |
+| Manuela Salazar    | Velocidad Extrema 2099 | RPG               |            4 | 2024-01-06   |
+| Isabella Mendoza   | Velocidad Extrema 2099 | RPG               |            1 | 2024-01-02   |
++--------------------+------------------------+-------------------+--------------+--------------+
+30 rows in set (0.001 sec)
+
+MariaDB [elite_games]>

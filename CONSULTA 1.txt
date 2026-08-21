@@ -1,0 +1,50 @@
+::Requisito funcional: El sistema debe permitir consultar los usuarios que han realizado pedidos, mostrando el detalle de la compra y el juego adquirido.
+Enunciado: Mostrar el nombre completo del usuario, el número de pedido, el nombre del juego, la cantidad y el precio unitario.
+
+
+MariaDB [elite_games]> SELECT CONCAT(u.nombre, ' ', u.apellido) AS nombre_completo,
+    ->        p.idPedido,
+    ->        j.nombre AS juego,
+    ->        dp.cantidad,
+    ->        dp.precio_unitario
+    -> FROM usuarios u
+    -> INNER JOIN pedidos p ON u.idUsuario = p.idUsuario
+    -> INNER JOIN detalle_pedido dp ON p.idPedido = dp.idPedido
+    -> INNER JOIN juegos j ON dp.idJuego = j.idJuego
+    -> ORDER BY p.idPedido;
++--------------------+----------+-----------------------+----------+-----------------+
+| nombre_completo    | idPedido | juego                 | cantidad | precio_unitario |
++--------------------+----------+-----------------------+----------+-----------------+
+| Juan G¢mez         |        1 | Sombras del Imperio   |        2 |           59.83 |
+| Camila Rodr¡guez   |        2 | Guardianes del Abismo |        3 |           41.15 |
+| Andr‚s P‚rez       |        3 | Estaci¢n Fantasma     |        1 |           58.83 |
+| Valentina Mart¡nez |        4 | Imperio de Cenizas    |        2 |           54.42 |
+| Santiago L¢pez     |        5 | Eco del Silencio      |        3 |           20.45 |
+| Mariana Garc¡a     |        6 | Fortaleza Eterna      |        1 |           48.82 |
+| Felipe Hern ndez   |        7 | Rebeli¢n Estelar      |        2 |           47.26 |
+| Laura Torres       |        8 | Cazadores de Sombra   |        3 |           41.47 |
+| Diego Ram¡rez      |        9 | Marea Oscura          |        1 |           30.66 |
+| Sof¡a D¡az         |       10 | Laberinto Infinito    |        2 |           45.63 |
+| Nicol s Castro     |       11 | Sombras del Imperio   |        3 |           24.45 |
+| Daniela Ortiz      |       12 | Guardianes del Abismo |        1 |           37.38 |
+| Sebasti n Rojas    |       13 | Estaci¢n Fantasma     |        2 |           38.14 |
+| Paula Morales      |       14 | Imperio de Cenizas    |        3 |           58.14 |
+| Alejandro Su rez   |       15 | Eco del Silencio      |        1 |           55.02 |
+| Natalia Vargas     |       16 | Fortaleza Eterna      |        2 |           30.53 |
+| Juli n Reyes       |       17 | Rebeli¢n Estelar      |        3 |           40.01 |
+| Carolina Jim‚nez   |       18 | Cazadores de Sombra   |        1 |           27.14 |
+| David Ruiz         |       19 | Marea Oscura          |        2 |           56.50 |
+| Isabella Mendoza   |       20 | Laberinto Infinito    |        3 |           54.81 |
+| Miguel Cruz        |       21 | Sombras del Imperio   |        1 |           31.93 |
+| Gabriela Herrera   |       22 | Guardianes del Abismo |        2 |           45.55 |
+| Tom s Guerrero     |       23 | Estaci¢n Fantasma     |        3 |           44.35 |
+| Valeria Molina     |       24 | Imperio de Cenizas    |        1 |           26.10 |
+| Esteban Aguilar    |       25 | Eco del Silencio      |        2 |           50.49 |
+| Manuela Salazar    |       26 | Fortaleza Eterna      |        3 |           41.57 |
+| Ricardo Restrepo   |       27 | Rebeli¢n Estelar      |        1 |           51.14 |
+| Camilo C rdenas    |       28 | Cazadores de Sombra   |        2 |           41.20 |
+| Andrea Pardo       |       29 | Marea Oscura          |        3 |           20.01 |
+| Juliana Navarro    |       30 | Laberinto Infinito    |        1 |           32.96 |
++--------------------+----------+-----------------------+----------+-----------------+
+30 rows in set (0.132 sec)
+
