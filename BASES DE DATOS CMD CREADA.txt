@@ -1,0 +1,184 @@
+MariaDB [(none)]> CREATE DATABASE elite_games;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> USE elite_games;
+Database changed
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 1. USUARIOS
+MariaDB [elite_games]> CREATE TABLE usuarios (
+    ->     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+    ->     nombre VARCHAR(100) NOT NULL,
+    ->     apellido VARCHAR(100) NOT NULL,
+    ->     email VARCHAR(150) NOT NULL UNIQUE,
+    ->     contrasena VARCHAR(255) NOT NULL,
+    ->     fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP
+    -> );
+Query OK, 0 rows affected (0.337 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 2. ADMINISTRADORES
+MariaDB [elite_games]> CREATE TABLE administradores (
+    ->     idAdmin INT AUTO_INCREMENT PRIMARY KEY,
+    ->     nombre VARCHAR(100) NOT NULL,
+    ->     apellido VARCHAR(100) NOT NULL,
+    ->     email VARCHAR(150) NOT NULL UNIQUE,
+    ->     contrasena VARCHAR(255) NOT NULL,
+    ->     rol VARCHAR(50) NOT NULL,
+    ->     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
+    -> );
+Query OK, 0 rows affected (0.326 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 3. PROVEEDORES
+MariaDB [elite_games]> CREATE TABLE proveedores (
+    ->     idProveedor INT AUTO_INCREMENT PRIMARY KEY,
+    ->     razon_social VARCHAR(200) NOT NULL,
+    ->     telefono VARCHAR(20),
+    ->     pais VARCHAR(100),
+    ->     activo TINYINT(1) DEFAULT 1
+    -> );
+Query OK, 0 rows affected (0.167 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 4. PLATAFORMAS
+MariaDB [elite_games]> CREATE TABLE plataformas (
+    ->     idPlataforma INT AUTO_INCREMENT PRIMARY KEY,
+    ->     nombre VARCHAR(100) NOT NULL UNIQUE
+    -> );
+Query OK, 0 rows affected (0.192 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 5. CATEGORIAS
+MariaDB [elite_games]> CREATE TABLE categorias (
+    ->     idCategoria INT AUTO_INCREMENT PRIMARY KEY,
+    ->     nombre VARCHAR(100) NOT NULL UNIQUE,
+    ->     descripcion TEXT
+    -> );
+Query OK, 0 rows affected (0.227 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 6. JUEGOS
+MariaDB [elite_games]> CREATE TABLE juegos (
+    ->     idJuego INT AUTO_INCREMENT PRIMARY KEY,
+    ->     nombre VARCHAR(200) NOT NULL,
+    ->     descripcion TEXT,
+    ->     desarrollador VARCHAR(200),
+    ->     fecha_lanzamiento DATE,
+    ->     imagen_url VARCHAR(500),
+    ->     idProveedor INT NOT NULL,
+    ->     idCategoria INT NOT NULL,
+    ->     FOREIGN KEY (idProveedor) REFERENCES proveedores(idProveedor),
+    ->     FOREIGN KEY (idCategoria) REFERENCES categorias(idCategoria)
+    -> );
+Query OK, 0 rows affected (0.214 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 7. ADMIN_JUEGO 
+MariaDB [elite_games]> CREATE TABLE admin_juego (
+    ->     idAdmin INT NOT NULL,
+    ->     idJuego INT NOT NULL,
+    ->     PRIMARY KEY (idAdmin, idJuego),
+    ->     FOREIGN KEY (idAdmin) REFERENCES administradores(idAdmin),
+    ->     FOREIGN KEY (idJuego) REFERENCES juegos(idJuego)
+    -> );
+Query OK, 0 rows affected (0.338 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 8. JUEGO_PLATAFORMA 
+MariaDB [elite_games]> CREATE TABLE juego_plataforma (
+    ->     idJuego INT NOT NULL,
+    ->     idPlataforma INT NOT NULL,
+    ->     precio DECIMAL(10,2) NOT NULL,
+    ->     PRIMARY KEY (idJuego, idPlataforma),
+    ->     FOREIGN KEY (idJuego) REFERENCES juegos(idJuego),
+    ->     FOREIGN KEY (idPlataforma) REFERENCES plataformas(idPlataforma)
+    -> );
+Query OK, 0 rows affected (0.210 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 9. PEDIDOS
+MariaDB [elite_games]> CREATE TABLE pedidos (
+    ->     idPedido INT AUTO_INCREMENT PRIMARY KEY,
+    ->     idUsuario INT NOT NULL,
+    ->     fecha_pedido DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ->     total DECIMAL(10,2) DEFAULT 0,
+    ->     estado VARCHAR(50) DEFAULT 'pendiente',
+    ->     FOREIGN KEY (idUsuario) REFERENCES usuarios(idUsuario)
+    -> );
+Query OK, 0 rows affected (0.230 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 10. PQRS 
+MariaDB [elite_games]> CREATE TABLE pqrs (
+    ->     idPQRS INT AUTO_INCREMENT PRIMARY KEY,
+    ->     idUsuario INT NOT NULL,
+    ->     idJuego INT,
+    ->     idPedido INT,
+    ->     idAdmin INT,
+    ->     tipo ENUM('peticion','queja','reclamo','sugerencia') NOT NULL,
+    ->     asunto VARCHAR(150) NOT NULL,
+    ->     descripcion TEXT NOT NULL,
+    ->     nroRadicado VARCHAR(30) NOT NULL UNIQUE,
+    ->     estado ENUM('abierto','en_proceso','cerrado') DEFAULT 'abierto',
+    ->     respuesta TEXT,
+    ->     fechaRegistro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ->     fechaRespuesta DATETIME,
+    ->     FOREIGN KEY (idUsuario) REFERENCES usuarios(idUsuario),
+    ->     FOREIGN KEY (idJuego) REFERENCES juegos(idJuego),
+    ->     FOREIGN KEY (idPedido) REFERENCES pedidos(idPedido),
+    ->     FOREIGN KEY (idAdmin) REFERENCES administradores(idAdmin)
+    -> );
+Query OK, 0 rows affected (0.336 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 11. DETALLE_PEDIDO
+MariaDB [elite_games]> CREATE TABLE detalle_pedido (
+    ->     idDetalle INT AUTO_INCREMENT PRIMARY KEY,
+    ->     idPedido INT NOT NULL,
+    ->     idJuego INT NOT NULL,
+    ->     cantidad INT NOT NULL,
+    ->     precio_unitario DECIMAL(10,2) NOT NULL,
+    ->     FOREIGN KEY (idPedido) REFERENCES pedidos(idPedido),
+    ->     FOREIGN KEY (idJuego) REFERENCES juegos(idJuego)
+    -> );
+Query OK, 0 rows affected (0.220 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 12. INVENTARIO
+MariaDB [elite_games]> CREATE TABLE inventario (
+    ->     idInventario INT AUTO_INCREMENT PRIMARY KEY,
+    ->     idJuego INT NOT NULL,
+    ->     stock_disponible INT DEFAULT 0,
+    ->     fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ->     FOREIGN KEY (idJuego) REFERENCES juegos(idJuego)
+    -> );
+Query OK, 0 rows affected (0.565 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 13. PAGOS
+MariaDB [elite_games]> CREATE TABLE pagos (
+    ->     idPago INT AUTO_INCREMENT PRIMARY KEY,
+    ->     idPedido INT NOT NULL,
+    ->     metodo_pago VARCHAR(50) NOT NULL,
+    ->     monto DECIMAL(10,2) NOT NULL,
+    ->     estado_pago VARCHAR(50) DEFAULT 'pendiente',
+    ->     referencia VARCHAR(200),
+    ->     fecha_pago DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ->     FOREIGN KEY (idPedido) REFERENCES pedidos(idPedido)
+    -> );
+Query OK, 0 rows affected (0.776 sec)
+
+MariaDB [elite_games]> 
+MariaDB [elite_games]> -- 14. RESENAS
+MariaDB [elite_games]> CREATE TABLE resenas (
+    ->     idResena INT AUTO_INCREMENT PRIMARY KEY,
+    ->     idUsuario INT NOT NULL,
+    ->     idJuego INT NOT NULL,
+    ->     calificacion TINYINT NOT NULL,
+    ->     comentario TEXT,
+    ->     fecha_resena DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ->     FOREIGN KEY (idUsuario) REFERENCES usuarios(idUsuario),
+    ->     FOREIGN KEY (idJuego) REFERENCES juegos(idJuego)
+    -> );
+Query OK, 0 rows affected (0.409 sec)
+
